@@ -45,7 +45,7 @@ function VoicePhishing() {
       setResult(null);
 
       const response = await axios.post(
-        "http://localhost:8000/api/fraud/voice/analyze",
+  `${API_URL}/api/fraud/voice/analyze`,
         {
           transcript: transcript.trim(),
         },

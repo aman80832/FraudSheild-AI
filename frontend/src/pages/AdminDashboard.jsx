@@ -85,12 +85,12 @@ function AdminDashboard() {
       const [alertsResponse, transactionsResponse] =
         await Promise.all([
           axios.get(
-            "http://localhost:8000/api/fraud/alerts",
+           `${import.meta.env.VITE_API_URL}/api/fraud/alerts`,
             { headers }
           ),
 
           axios.get(
-            "http://localhost:8000/api/transactions",
+            `${import.meta.env.VITE_API_URL}/api/transactions`,
             { headers }
           ),
         ]);
@@ -236,7 +236,7 @@ function AdminDashboard() {
       setReviewing(true);
 
       await axios.patch(
-        `http://localhost:8000/api/fraud/alerts/${alertId}/read`,
+        `${import.meta.env.VITE_API_URL}/api/fraud/alerts/${alertId}/read`,
         {},
         { headers }
       );
@@ -307,7 +307,7 @@ function AdminDashboard() {
       setError("");
 
       const response = await axios.patch(
-        `http://localhost:8000/api/fraud/alerts/${alertId}/${action}`,
+        `${import.meta.env.VITE_API_URL}/api/fraud/alerts/${alertId}/${action}`,
         {},
         {
           headers: {
@@ -401,7 +401,7 @@ function AdminDashboard() {
       setError("");
 
       await axios.delete(
-        `http://localhost:8000/api/fraud/alerts/${alertId}`,
+        `${import.meta.env.VITE_API_URL}/api/fraud/alerts/${alertId}`,
         { headers }
       );
 

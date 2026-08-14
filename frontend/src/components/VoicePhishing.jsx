@@ -446,7 +446,7 @@ function VoicePhishing() {
     try {
       const response =
         await axios.post(
-          "http://localhost:8000/api/voice/analyze",
+          `${import.meta.env.VITE_API_URL}/api/voice/analyze`,
           {
             transcript:
               transcript.trim(),

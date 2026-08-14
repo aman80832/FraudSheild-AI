@@ -30,7 +30,7 @@ function UPISimulator({ onAnalysisComplete }) {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/fraud/analyze",
+    `${import.meta.env.VITE_API_URL}/api/fraud/analyze`,
         {
           amount: Number(amount),
           beneficiary_new: beneficiaryNew,
