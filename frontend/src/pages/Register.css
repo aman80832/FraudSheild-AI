@@ -1,0 +1,364 @@
+/* =====================================================
+   FRAUDSHIELD AI
+   REGISTER PAGE
+===================================================== */
+
+.register-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(37, 99, 235, 0.08),
+      transparent 40%
+    ),
+    #f5f8fc;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 40px 20px;
+
+  box-sizing: border-box;
+}
+
+.register-wrapper {
+  width: 100%;
+  max-width: 440px;
+}
+
+.register-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  margin-bottom: 18px;
+
+  color: #64748b;
+  text-decoration: none;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  transition: 0.2s ease;
+}
+
+.register-back:hover {
+  color: #0f172a;
+  transform: translateX(-2px);
+}
+
+.register-card {
+  background: rgba(255, 255, 255, 0.96);
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 22px;
+
+  padding: 36px;
+
+  box-shadow:
+    0 20px 60px rgba(15, 23, 42, 0.08);
+
+  box-sizing: border-box;
+}
+
+.register-logo {
+  width: 58px;
+  height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 16px;
+
+  background: #0f172a;
+
+  color: white;
+
+  margin-bottom: 22px;
+}
+
+.register-card h1 {
+  margin: 0;
+
+  color: #0f172a;
+
+  font-size: 28px;
+  font-weight: 750;
+
+  letter-spacing: -0.5px;
+}
+
+.register-subtitle {
+  margin: 9px 0 26px;
+
+  color: #64748b;
+
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* =====================================================
+   MESSAGES
+===================================================== */
+
+.register-message {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 12px 14px;
+
+  margin-bottom: 18px;
+
+  border-radius: 10px;
+
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.register-message.error {
+  background: #fff1f2;
+  border: 1px solid #fecdd3;
+  color: #be123c;
+}
+
+.register-message.success {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #15803d;
+}
+
+/* =====================================================
+   FORM
+===================================================== */
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.register-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.register-field label {
+  color: #1e293b;
+
+  font-size: 13px;
+  font-weight: 650;
+}
+
+.register-input {
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 0 13px;
+
+  border: 1px solid #cbd5e1;
+
+  border-radius: 10px;
+
+  background: #ffffff;
+
+  box-sizing: border-box;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.register-input svg {
+  flex-shrink: 0;
+  color: #94a3b8;
+}
+
+.register-input:focus-within {
+  border-color: #2563eb;
+
+  box-shadow:
+    0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.register-input input {
+  width: 100%;
+
+  height: 100%;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  color: #0f172a;
+
+  font-size: 14px;
+}
+
+.register-input input::placeholder {
+  color: #94a3b8;
+}
+
+/* =====================================================
+   PASSWORD EYE
+===================================================== */
+
+.register-eye {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 4px;
+
+  border: none;
+
+  background: transparent;
+
+  color: #64748b;
+
+  cursor: pointer;
+}
+
+.register-eye:hover {
+  color: #0f172a;
+}
+
+/* =====================================================
+   TERMS
+===================================================== */
+
+.register-terms {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 9px;
+
+  color: #64748b;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+
+  cursor: pointer;
+}
+
+.register-terms input {
+  width: 16px;
+  height: 16px;
+
+  margin: 1px 0 0;
+
+  accent-color: #2563eb;
+
+  cursor: pointer;
+
+  flex-shrink: 0;
+}
+
+/* =====================================================
+   BUTTON
+===================================================== */
+
+.register-button {
+  height: 50px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: #0f172a;
+
+  color: white;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.register-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 8px 20px rgba(15, 23, 42, 0.18);
+}
+
+.register-button:disabled {
+  opacity: 0.6;
+
+  cursor: not-allowed;
+}
+
+/* =====================================================
+   LOGIN LINK
+===================================================== */
+
+.register-login {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-top: 24px;
+
+  padding-top: 22px;
+
+  border-top: 1px solid #e2e8f0;
+
+  color: #64748b;
+
+  font-size: 13px;
+}
+
+.register-login a {
+  color: #2563eb;
+
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+.register-login a:hover {
+  text-decoration: underline;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 520px) {
+
+  .register-page {
+    padding: 25px 15px;
+  }
+
+  .register-card {
+    padding: 26px 20px;
+
+    border-radius: 18px;
+  }
+
+  .register-card h1 {
+    font-size: 24px;
+  }
+
+}
