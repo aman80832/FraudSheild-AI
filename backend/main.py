@@ -206,7 +206,7 @@ class VoiceAnalysisRequest(BaseModel):
 # ROOT API
 # =====================================================
 
-@app.get("/")
+@app.get("/api")
 def root():
     return {
         "message": "FraudShield AI API is running",
@@ -219,7 +219,7 @@ def root():
 # HEALTH CHECK
 # =====================================================
 
-@app.get("/health")
+@app.get("/api/health")
 def health_check():
     return {
         "status": "healthy",
