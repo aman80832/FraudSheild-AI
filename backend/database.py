@@ -1,24 +1,28 @@
 import os
 
+from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
+
+# Load environment variables
+load_dotenv()
 
 
 # =====================================================
 # DATABASE CONFIGURATION
 # =====================================================
 
-DATABASE_URL = os.getenv(
-    "DATABASE_URL",
-    "sqlite:///./fraudshield.db",
-)
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 
 # =====================================================
 # DATABASE ENGINE
 # =====================================================
 
-if DATABASE_URL.startswith("sqlite"):
+if not DATABASE_URL:
+    # Local development fallback
+    DATABASE_URL = "sqlite:///./fraudshield.db"
+
     engine = create_engine(
         DATABASE_URL,
         connect_args={
@@ -27,7 +31,25 @@ if DATABASE_URL.startswith("sqlite"):
     )
 
 else:
-    # PostgreSQL / production database
+    # PostgreSQL / Neon
+    #
+    # psycopg3 is installed in requirements.txt,
+    # so explicitly use the psycopg SQLAlchemy driver.
+
+    if DATABASE_URL.startswith("postgres://"):
+        DATABASE_URL = DATABASE_URL.replace(
+            "postgres://",
+            "postgresql+psycopg://",
+            1,
+        )
+
+    elif DATABASE_URL.startswith("postgresql://"):
+        DATABASE_URL = DATABASE_URL.replace(
+            "postgresql://",
+            "postgresql+psycopg://",
+            1,
+        )
+
     engine = create_engine(
         DATABASE_URL,
         pool_pre_ping=True,
@@ -61,6 +83,5 @@ def get_db():
 
     try:
         yield db
-
     finally:
         db.close()
