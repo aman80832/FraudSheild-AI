@@ -34,17 +34,34 @@ JWT_SECRET = os.getenv("JWT_SECRET")
 JWT_ALGORITHM = os.getenv("JWT_ALGORITHM", "HS256")
 
 # Comma-separated production/development frontend origins.
-# Example:
-# FRONTEND_URLS=http://localhost:5173,https://your-production-domain.com
+#
+# Vercel production frontend:
+# https://fraud-sheild-ai-6tju.vercel.app
+#
+# You can also add additional frontend URLs in Vercel as:
+# FRONTEND_URLS=http://localhost:5173,https://your-domain.vercel.app
+DEFAULT_FRONTEND_URLS = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "http://localhost:4173",
+    "http://127.0.0.1:4173",
+    "https://fraud-sheild-ai-6tju.vercel.app",
+]
+
 FRONTEND_URLS = [
     origin.strip().rstrip("/")
     for origin in os.getenv(
         "FRONTEND_URLS",
-       "http://localhost:5173,http://127.0.0.1:5173,http://localhost:4173,http://127.0.0.1:4173",
+        ",".join(DEFAULT_FRONTEND_URLS),
     ).split(",")
     if origin.strip()
 ]
 
+# Always allow the known production frontend.
+PRODUCTION_FRONTEND_URL = "https://fraud-sheild-ai-6tju.vercel.app"
+
+if PRODUCTION_FRONTEND_URL not in FRONTEND_URLS:
+    FRONTEND_URLS.append(PRODUCTION_FRONTEND_URL)
 MAX_REQUEST_SIZE = int(
     os.getenv("MAX_REQUEST_SIZE", str(2 * 1024 * 1024))
 )
@@ -94,9 +111,6 @@ security = HTTPBearer()
 
 
 # =====================================================
-# CORS
-# =====================================================
-# =====================================================
 # CORS CONFIGURATION
 # =====================================================
 
@@ -104,8 +118,8 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=FRONTEND_URLS,
     allow_credentials=True,
-    allow_methods=["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
-    allow_headers=["Authorization", "Content-Type", "Accept"],
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # =====================================================
