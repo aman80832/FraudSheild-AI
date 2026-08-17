@@ -1,34 +1,36 @@
+import "./Register.css";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
 import {
-  ShieldCheck,
+  Shield,
   User,
   Mail,
   Lock,
   Eye,
   EyeOff,
   ArrowLeft,
+  CheckCircle,
   AlertCircle,
-  CheckCircle2,
+  Loader2,
 } from "lucide-react";
 
-import "./Register.css";
+const API_URL = (
+  import.meta.env.VITE_API_URL ||
+  "http://127.0.0.1:8000"
+).replace(/\/$/, "");
 
 function Register() {
   const navigate = useNavigate();
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] =
-    useState("");
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
 
-  const [showPassword, setShowPassword] =
-    useState(false);
-
-  const [showConfirmPassword, setShowConfirmPassword] =
-    useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
 
   const [agree, setAgree] = useState(false);
 
@@ -36,26 +38,44 @@ function Register() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
-  const handleRegister = async (event) => {
+  const updateField = (field, value) => {
+    setForm((previous) => ({
+      ...previous,
+      [field]: value,
+    }));
+
+    if (error) {
+      setError("");
+    }
+  };
+
+  const submitRegister = async (event) => {
     event.preventDefault();
 
     setError("");
     setSuccess("");
 
-    const cleanName = name.trim();
-    const cleanEmail = email.trim().toLowerCase();
+    const name = form.name.trim();
+    const email = form.email.trim().toLowerCase();
+    const password = form.password;
+    const confirmPassword = form.confirmPassword;
 
-    // -------------------------------
-    // VALIDATION
-    // -------------------------------
+    // ==============================
+    // FRONTEND VALIDATION
+    // ==============================
 
-    if (!cleanName) {
+    if (!name) {
       setError("Please enter your full name.");
       return;
     }
 
-    if (!cleanEmail) {
+    if (!email) {
       setError("Please enter your email address.");
+      return;
+    }
+
+    if (!email.includes("@")) {
+      setError("Please enter a valid email address.");
       return;
     }
 
@@ -73,7 +93,7 @@ function Register() {
 
     if (!agree) {
       setError(
-        "Please accept the terms and security policy."
+        "Please accept the terms before creating your account."
       );
       return;
     }
@@ -81,44 +101,69 @@ function Register() {
     try {
       setLoading(true);
 
-      const response = await axios.post(
-        "http://127.0.0.1:8000/api/auth/register",
+      const response = await fetch(
+        `${API_URL}/api/auth/register`,
         {
-          name: cleanName,
-          email: cleanEmail,
-          password: password,
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            password,
+          }),
         }
       );
 
-      const data = response.data;
+      let data = {};
 
-      // -------------------------------
-      // SAVE LOGIN SESSION
-      // -------------------------------
+      try {
+        data = await response.json();
+      } catch {
+        data = {};
+      }
 
-      localStorage.setItem(
-        "access_token",
-        data.access_token
-      );
+      if (!response.ok) {
+        throw new Error(
+          data?.detail ||
+            data?.message ||
+            `Registration failed (${response.status})`
+        );
+      }
 
-      localStorage.setItem(
-        "user",
-        JSON.stringify(data.user)
-      );
+      // ==============================
+      // SAVE AUTH SESSION
+      // ==============================
+
+      if (data.access_token) {
+        localStorage.setItem(
+          "access_token",
+          data.access_token
+        );
+      }
+
+      if (data.user) {
+        localStorage.setItem(
+          "user",
+          JSON.stringify(data.user)
+        );
+      }
 
       setSuccess(
-        "Account created successfully!"
+        "Account created successfully. Redirecting..."
       );
 
-      // -------------------------------
-      // REDIRECT
-      // -------------------------------
+      // ==============================
+      // GO TO DASHBOARD
+      // ==============================
 
       setTimeout(() => {
         navigate("/dashboard", {
           replace: true,
         });
-      }, 800);
+      }, 700);
 
     } catch (err) {
       console.error(
@@ -127,10 +172,9 @@ function Register() {
       );
 
       setError(
-        err.response?.data?.detail ||
-        "Unable to create your account."
+        err?.message ||
+          "Unable to create account. Please try again."
       );
-
     } finally {
       setLoading(false);
     }
@@ -141,24 +185,26 @@ function Register() {
 
       <div className="register-wrapper">
 
-        {/* BACK TO HOME */}
-
+        {/* BACK */}
         <Link
-          to="/"
+          to="/login"
           className="register-back"
         >
-          <ArrowLeft size={17} />
-          Back to home
+          <ArrowLeft size={15} />
+          Back to Login
         </Link>
 
         {/* CARD */}
-
         <div className="register-card">
 
           {/* LOGO */}
-
           <div className="register-logo">
-            <ShieldCheck size={30} />
+            <Shield size={27} />
+          </div>
+
+          <div className="register-brand">
+            <span>FRAUDSHIELD AI</span>
+            <small>SECURE FRAUD INTELLIGENCE</small>
           </div>
 
           <h1>
@@ -166,121 +212,110 @@ function Register() {
           </h1>
 
           <p className="register-subtitle">
-            Join FraudShield AI and protect
-            your digital transactions.
+            Join FraudShield AI and protect transactions
+            with real-time fraud intelligence.
           </p>
 
           {/* ERROR */}
-
           {error && (
             <div className="register-message error">
-              <AlertCircle size={18} />
-
-              <span>
-                {error}
-              </span>
+              <AlertCircle size={17} />
+              <span>{error}</span>
             </div>
           )}
 
           {/* SUCCESS */}
-
           {success && (
             <div className="register-message success">
-              <CheckCircle2 size={18} />
-
-              <span>
-                {success}
-              </span>
+              <CheckCircle size={17} />
+              <span>{success}</span>
             </div>
           )}
 
           {/* FORM */}
-
           <form
-            onSubmit={handleRegister}
             className="register-form"
+            onSubmit={submitRegister}
           >
 
             {/* NAME */}
-
             <div className="register-field">
-
-              <label>
-                Full name
+              <label htmlFor="register-name">
+                Full Name
               </label>
 
               <div className="register-input">
-
-                <User size={18} />
+                <User size={17} />
 
                 <input
+                  id="register-name"
                   type="text"
                   placeholder="Enter your full name"
-                  value={name}
-                  onChange={(e) =>
-                    setName(e.target.value)
+                  value={form.name}
+                  onChange={(event) =>
+                    updateField(
+                      "name",
+                      event.target.value
+                    )
                   }
                   autoComplete="name"
-                  required
+                  disabled={loading}
                 />
-
               </div>
-
             </div>
 
             {/* EMAIL */}
-
             <div className="register-field">
-
-              <label>
-                Email address
+              <label htmlFor="register-email">
+                Email Address
               </label>
 
               <div className="register-input">
-
-                <Mail size={18} />
+                <Mail size={17} />
 
                 <input
+                  id="register-email"
                   type="email"
                   placeholder="you@example.com"
-                  value={email}
-                  onChange={(e) =>
-                    setEmail(e.target.value)
+                  value={form.email}
+                  onChange={(event) =>
+                    updateField(
+                      "email",
+                      event.target.value
+                    )
                   }
                   autoComplete="email"
-                  required
+                  disabled={loading}
                 />
-
               </div>
-
             </div>
 
             {/* PASSWORD */}
-
             <div className="register-field">
-
-              <label>
+              <label htmlFor="register-password">
                 Password
               </label>
 
               <div className="register-input">
-
-                <Lock size={18} />
+                <Lock size={17} />
 
                 <input
+                  id="register-password"
                   type={
                     showPassword
                       ? "text"
                       : "password"
                   }
                   placeholder="Minimum 8 characters"
-                  value={password}
-                  onChange={(e) =>
-                    setPassword(e.target.value)
+                  value={form.password}
+                  onChange={(event) =>
+                    updateField(
+                      "password",
+                      event.target.value
+                    )
                   }
                   autoComplete="new-password"
-                  minLength={8}
-                  required
+                  disabled={loading}
                 />
 
                 <button
@@ -288,107 +323,111 @@ function Register() {
                   className="register-eye"
                   onClick={() =>
                     setShowPassword(
-                      !showPassword
+                      (previous) => !previous
                     )
                   }
+                  tabIndex={-1}
                 >
                   {showPassword ? (
-                    <EyeOff size={18} />
+                    <EyeOff size={17} />
                   ) : (
-                    <Eye size={18} />
+                    <Eye size={17} />
                   )}
                 </button>
-
               </div>
-
             </div>
 
             {/* CONFIRM PASSWORD */}
-
             <div className="register-field">
-
-              <label>
-                Confirm password
+              <label htmlFor="register-confirm">
+                Confirm Password
               </label>
 
               <div className="register-input">
-
-                <Lock size={18} />
+                <Lock size={17} />
 
                 <input
+                  id="register-confirm"
                   type={
-                    showConfirmPassword
+                    showConfirm
                       ? "text"
                       : "password"
                   }
                   placeholder="Re-enter your password"
-                  value={confirmPassword}
-                  onChange={(e) =>
-                    setConfirmPassword(
-                      e.target.value
+                  value={form.confirmPassword}
+                  onChange={(event) =>
+                    updateField(
+                      "confirmPassword",
+                      event.target.value
                     )
                   }
                   autoComplete="new-password"
-                  required
+                  disabled={loading}
                 />
 
                 <button
                   type="button"
                   className="register-eye"
                   onClick={() =>
-                    setShowConfirmPassword(
-                      !showConfirmPassword
+                    setShowConfirm(
+                      (previous) => !previous
                     )
                   }
+                  tabIndex={-1}
                 >
-                  {showConfirmPassword ? (
-                    <EyeOff size={18} />
+                  {showConfirm ? (
+                    <EyeOff size={17} />
                   ) : (
-                    <Eye size={18} />
+                    <Eye size={17} />
                   )}
                 </button>
-
               </div>
-
             </div>
 
             {/* TERMS */}
-
             <label className="register-terms">
-
               <input
                 type="checkbox"
                 checked={agree}
-                onChange={(e) =>
-                  setAgree(e.target.checked)
+                onChange={(event) =>
+                  setAgree(event.target.checked)
                 }
+                disabled={loading}
               />
 
               <span>
-                I agree to the FraudShield AI
-                security terms and privacy policy.
+                I agree to the FraudShield AI terms
+                and acknowledge that the platform
+                handles sensitive financial data.
               </span>
-
             </label>
 
             {/* SUBMIT */}
-
             <button
               type="submit"
               className="register-button"
               disabled={loading}
             >
-              {loading
-                ? "Creating account..."
-                : "Create Account"}
+              {loading ? (
+                <>
+                  <Loader2
+                    size={17}
+                    className="register-spinner"
+                  />
+                  Creating Account...
+                </>
+              ) : (
+                <>
+                  <Shield size={17} />
+                  Create Secure Account
+                </>
+              )}
             </button>
 
           </form>
 
           {/* LOGIN */}
-
           <div className="register-login">
-
             <span>
               Already have an account?
             </span>
@@ -396,9 +435,15 @@ function Register() {
             <Link to="/login">
               Sign in to FraudShield
             </Link>
-
           </div>
 
+        </div>
+
+        {/* SECURITY FOOTER */}
+        <div className="register-security">
+          <Lock size={12} />
+          Secure registration · JWT authentication ·
+          FraudShield AI
         </div>
 
       </div>

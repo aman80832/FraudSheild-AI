@@ -4,7 +4,9 @@ function VoiceAnalyzer() {
   return (
     <div className="voice-analyzer-page">
       <div className="voice-analyzer-header">
-        <span>🛡️ FRAUDSHIELD AI</span>
+        <div className="voice-analyzer-badge">
+          🛡️ FRAUDSHIELD AI
+        </div>
 
         <h1>Voice Phishing Protection</h1>
 
@@ -15,7 +17,9 @@ function VoiceAnalyzer() {
         </p>
       </div>
 
-      <VoicePhishing />
+      <div className="voice-analyzer-content">
+        <VoicePhishing />
+      </div>
     </div>
   );
 }
