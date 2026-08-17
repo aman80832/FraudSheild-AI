@@ -1,8 +1,9 @@
-/* =========================================================
+
+/* =
+========================================================
    FRAUDSHIELD AI — FRAUD NETWORK
    Enterprise Dark UI
 ========================================================= */
-import "./FraudNetwork.css";
 .network-page {
   min-height: 100vh;
   padding: 32px;
