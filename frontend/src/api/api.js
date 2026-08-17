@@ -6,7 +6,9 @@ import axios from "axios";
 
 const API_URL =
   import.meta.env.VITE_API_URL ||
-  "http://127.0.0.1:8000";
+  "https://fraud-sheild-backend.vercel.app";
+
+console.log("FraudShield API URL:", API_URL);
 
 const api = axios.create({
   baseURL: API_URL,
@@ -19,15 +21,11 @@ const api = axios.create({
 
 api.interceptors.request.use(
   (config) => {
-    const token =
-      localStorage.getItem("access_token");
+    const token = localStorage.getItem("access_token");
 
     if (token) {
-      config.headers =
-        config.headers || {};
-
-      config.headers.Authorization =
-        `Bearer ${token}`;
+      config.headers = config.headers || {};
+      config.headers.Authorization = `Bearer ${token}`;
     }
 
     return config;
@@ -42,30 +40,17 @@ api.interceptors.request.use(
 // =====================================================
 
 api.interceptors.response.use(
-  (response) => {
-    return response;
-  },
+  (response) => response,
 
   (error) => {
-    const status =
-      error.response?.status;
+    const status = error.response?.status;
 
     if (status === 401) {
-      localStorage.removeItem(
-        "access_token"
-      );
+      localStorage.removeItem("access_token");
+      localStorage.removeItem("user");
 
-      localStorage.removeItem(
-        "user"
-      );
-
-      if (
-        window.location.pathname !==
-        "/login"
-      ) {
-        window.location.replace(
-          "/login?session=expired"
-        );
+      if (window.location.pathname !== "/login") {
+        window.location.replace("/login?session=expired");
       }
     }
 
