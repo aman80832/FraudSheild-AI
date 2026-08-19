@@ -30,6 +30,8 @@ const API_URL = (
 ).replace(/\/$/, "");
 
 function Dashboard() {
+  const [userName, setUserName] = useState("User");
+
   const [analytics, setAnalytics] = useState(null);
   const [loadingAnalytics, setLoadingAnalytics] = useState(true);
   const [analyticsError, setAnalyticsError] = useState("");
@@ -125,6 +127,36 @@ function Dashboard() {
       setNotificationsLoading(false);
     }
   };
+
+  // =====================================================
+  // LOAD LOGGED-IN USER
+  // =====================================================
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+
+    if (!storedUser) {
+      return;
+    }
+
+    try {
+      const user = JSON.parse(storedUser);
+
+      const name =
+        user?.name ||
+        user?.full_name ||
+        user?.username ||
+        user?.first_name ||
+        user?.given_name ||
+        user?.email?.split("@")[0] ||
+        "User";
+
+      setUserName(String(name).trim() || "User");
+    } catch (error) {
+      console.error("Unable to read logged-in user:", error);
+      setUserName("User");
+    }
+  }, []);
 
   useEffect(() => {
     loadAnalytics();
@@ -343,10 +375,11 @@ function Dashboard() {
               <span className="fs2-live-dot" />
               FRAUDSHIELD SECURITY OPERATIONS CENTER
             </div>
-            <h1>
-              Fraud Intelligence
+            <h1 className="fs2-welcome-title">
+              Welcome, {userName}
+              <span className="fs2-welcome-wave"> </span>
               <br />
-              <span>Command Center</span>
+              <span>Fraud Intelligence Command Center</span>
             </h1>
             <p>
               Real-time transaction monitoring, AI-powered risk analysis
@@ -868,6 +901,16 @@ function Dashboard() {
           line-height:1.02;
           letter-spacing:-2px;
         }
+        .fs2-welcome-title {
+          color:#f8fafc;
+        }
+
+        .fs2-welcome-wave {
+          color:#fbbf24;
+          font-size:.78em;
+          letter-spacing:0;
+        }
+
         .fs2-hero h1 span { color:#60a5fa; }
         .fs2-hero p { max-width:580px; margin:0; color:#718096; font-size:12px; line-height:1.7; }
 
