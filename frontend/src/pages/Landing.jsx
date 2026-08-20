@@ -6,9 +6,18 @@ import {
   Activity,
   ArrowRight,
   CheckCircle,
+  Sun,
+  Moon,
 } from "lucide-react";
 
+import { useTheme } from "../context/ThemeContext";
+import { useLanguage } from "../context/LanguageContext";
+import LanguageSelector from "../components/LanguageSelector";
+
 function Landing() {
+  const { theme, toggleTheme } = useTheme();
+  const { t } = useLanguage();
+
   return (
     <div className="landing-page">
 
@@ -24,19 +33,48 @@ function Landing() {
         </div>
 
         <div className="nav-links">
-          <a href="#features">Features</a>
-          <a href="#security">Security</a>
-          <a href="#how-it-works">How It Works</a>
+          <a href="#features">{t("features")}</a>
+          <a href="#security">{t("security")}</a>
+          <a href="#how-it-works">{t("howItWorks")}</a>
         </div>
 
         <div className="nav-actions">
+
+          {/* =================================================
+              LIGHT / DARK MODE TOGGLE
+          ================================================= */}
+          <button
+            type="button"
+            className="theme-toggle"
+            onClick={toggleTheme}
+            aria-label={
+              theme === "light"
+                ? "Switch to dark mode"
+                : "Switch to light mode"
+            }
+            title={
+              theme === "light"
+                ? "Switch to dark mode"
+                : "Switch to light mode"
+            }
+          >
+            {theme === "light" ? (
+              <Moon size={18} />
+            ) : (
+              <Sun size={18} />
+            )}
+          </button>
+
+          <LanguageSelector />
+
           <Link to="/login" className="login-link">
-            Login
+            {t("login")}
           </Link>
 
           <Link to="/register" className="signup-btn">
-            Get Started
+            {t("getStarted")}
           </Link>
+
         </div>
 
       </nav>
@@ -49,14 +87,14 @@ function Landing() {
 
           <div className="hero-badge">
             <Activity size={16} />
-            AI-Powered Real-Time Protection
+            {t("aiProtection")}
           </div>
 
           <h1>
-            Stop Fraud
+            {t("stopFraud")}
             <br />
 
-            <span>Before It Happens.</span>
+            <span>{t("beforeItHappens")}</span>
           </h1>
 
           <p>
@@ -68,12 +106,12 @@ function Landing() {
           <div className="hero-buttons">
 
             <Link to="/register" className="primary-btn">
-              Protect My Account
+              {t("protectAccount")}
               <ArrowRight size={18} />
             </Link>
 
             <a href="#how-it-works" className="secondary-btn">
-              See How It Works
+              {t("seeHowItWorks")}
             </a>
 
           </div>
@@ -82,17 +120,17 @@ function Landing() {
 
             <div>
               <CheckCircle size={18} />
-              Real-Time Detection
+              {t("realTimeDetection")}
             </div>
 
             <div>
               <CheckCircle size={18} />
-              Explainable AI
+              {t("explainableAI")}
             </div>
 
             <div>
               <CheckCircle size={18} />
-              Privacy First
+              {t("privacyFirst")}
             </div>
 
           </div>
@@ -109,14 +147,14 @@ function Landing() {
 
               <div>
                 <span className="small-label">
-                  TRANSACTION SECURITY
+                  {t("transactionSecurity")}
                 </span>
 
                 <h3>₹35,000</h3>
               </div>
 
               <div className="risk-badge">
-                HIGH RISK
+                {t("highRisk")}
               </div>
 
             </div>
@@ -130,10 +168,10 @@ function Landing() {
               </div>
 
               <div>
-                <h4>Suspicious Activity</h4>
+                <h4>{t("suspiciousActivity")}</h4>
 
                 <p>
-                  Multiple unusual signals detected
+                  {t("multipleSignals")}
                 </p>
               </div>
 
@@ -143,22 +181,22 @@ function Landing() {
             <div className="risk-reasons">
 
               <div>
-                <span>New beneficiary</span>
+                <span>{t("newBeneficiary")}</span>
                 <strong>+25</strong>
               </div>
 
               <div>
-                <span>Unusual amount</span>
+                <span>{t("unusualAmount")}</span>
                 <strong>+20</strong>
               </div>
 
               <div>
-                <span>New device</span>
+                <span>{t("newDevice")}</span>
                 <strong>+15</strong>
               </div>
 
               <div>
-                <span>Suspicious voice interaction</span>
+                <span>{t("suspiciousVoice")}</span>
                 <strong>+20</strong>
               </div>
 
@@ -166,7 +204,7 @@ function Landing() {
 
 
             <button className="protect-btn">
-              Review Transaction
+              {t("reviewTransaction")}
             </button>
 
           </div>
@@ -181,12 +219,12 @@ function Landing() {
 
         <div className="section-heading">
 
-          <span>POWERFUL PROTECTION</span>
+          <span>{t("powerfulProtection")}</span>
 
           <h2>
-            More than just
+            {t("moreThanFraud")}
             <br />
-            <span>fraud detection.</span>
+            <span>{t("fraudDetection")}</span>
           </h2>
 
           <p>
@@ -279,30 +317,44 @@ function Landing() {
         <div className="steps">
 
           <div className="step">
+
             <div>01</div>
+
             <h3>Analyze</h3>
+
             <p>
               Transaction, device and behavioural signals
               are analyzed in real time.
             </p>
+
           </div>
 
+
           <div className="step">
+
             <div>02</div>
+
             <h3>Understand</h3>
+
             <p>
               AI identifies suspicious patterns and explains
               the signals behind the risk score.
             </p>
+
           </div>
 
+
           <div className="step">
+
             <div>03</div>
+
             <h3>Protect</h3>
+
             <p>
               The system recommends the safest action based
               on the calculated risk.
             </p>
+
           </div>
 
         </div>

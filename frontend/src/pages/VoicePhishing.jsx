@@ -314,7 +314,7 @@ function VoicePhishing() {
   const RiskIcon = riskMeta.icon;
 
   return (
-    <div className="fs-voice-page">
+    <div className="fs-voice-page" data-page="voice-phishing">
       <style>{`
         .fs-voice-page {
           min-height: 100vh;
@@ -1244,6 +1244,462 @@ function VoicePhishing() {
         @keyframes fs-spin {
           to { transform: rotate(360deg); }
         }
+
+        /* =====================================================
+           FRAUDSHIELD DARK MODE
+           Theme is controlled by:
+           html[data-theme="dark"]
+           html.dark
+           body.dark
+        ===================================================== */
+
+        html[data-theme="dark"] .fs-voice-page,
+        html.dark .fs-voice-page,
+        body.dark .fs-voice-page {
+          background:
+            radial-gradient(circle at 85% 5%, rgba(37,99,235,.16), transparent 28%),
+            #07111f;
+          color: #f8fafc;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-voice-header h1,
+        html.dark .fs-voice-page .fs-voice-header h1,
+        body.dark .fs-voice-page .fs-voice-header h1 {
+          color: #f8fafc;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-voice-header p,
+        html.dark .fs-voice-page .fs-voice-header p,
+        body.dark .fs-voice-page .fs-voice-header p {
+          color: #9fb0c4;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-card,
+        html.dark .fs-voice-page .fs-card,
+        body.dark .fs-voice-page .fs-card {
+          background: #0d1a2a;
+          border-color: rgba(148,163,184,.17);
+          box-shadow: 0 18px 45px rgba(0,0,0,.28);
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-live-card,
+        html.dark .fs-voice-page .fs-live-card,
+        body.dark .fs-voice-page .fs-live-card {
+          background:
+            linear-gradient(180deg, rgba(13,26,42,.98), rgba(10,22,37,.98));
+          border-color: rgba(96,165,250,.22);
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-card-head,
+        html.dark .fs-voice-page .fs-card-head,
+        body.dark .fs-voice-page .fs-card-head {
+          border-bottom-color: rgba(148,163,184,.12);
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-card-title h2,
+        html.dark .fs-voice-page .fs-card-title h2,
+        body.dark .fs-voice-page .fs-card-title h2 {
+          color: #f1f5f9;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-card-title p,
+        html.dark .fs-voice-page .fs-card-title p,
+        body.dark .fs-voice-page .fs-card-title p {
+          color: #8295aa;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-card-title-icon,
+        html.dark .fs-voice-page .fs-card-title-icon,
+        body.dark .fs-voice-page .fs-card-title-icon {
+          background: rgba(59,130,246,.10);
+          border-color: rgba(96,165,250,.22);
+          color: #60a5fa;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-live-title-icon,
+        html.dark .fs-voice-page .fs-live-title-icon,
+        body.dark .fs-voice-page .fs-live-title-icon {
+          background: rgba(239,68,68,.10);
+          border-color: rgba(239,68,68,.25);
+          color: #f87171;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-reset,
+        html.dark .fs-voice-page .fs-reset,
+        body.dark .fs-voice-page .fs-reset {
+          background: #101f32;
+          color: #d7e1ec;
+          border-color: rgba(148,163,184,.22);
+          box-shadow: none;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-reset:hover,
+        html.dark .fs-voice-page .fs-reset:hover,
+        body.dark .fs-voice-page .fs-reset:hover {
+          background: #14263b;
+          border-color: rgba(96,165,250,.40);
+          color: #93c5fd;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-live-status,
+        html.dark .fs-voice-page .fs-live-status,
+        body.dark .fs-voice-page .fs-live-status {
+          background: #0a1625;
+          border-color: rgba(148,163,184,.20);
+          color: #91a4b9;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-live-toggle,
+        html.dark .fs-voice-page .fs-live-toggle,
+        body.dark .fs-voice-page .fs-live-toggle {
+          background: #0a1625;
+          border-color: rgba(148,163,184,.17);
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-live-toggle strong,
+        html.dark .fs-voice-page .fs-live-toggle strong,
+        body.dark .fs-voice-page .fs-live-toggle strong {
+          color: #e2e8f0;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-live-toggle small,
+        html.dark .fs-voice-page .fs-live-toggle small,
+        body.dark .fs-voice-page .fs-live-toggle small {
+          color: #71859a;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-live-transcript,
+        html.dark .fs-voice-page .fs-live-transcript,
+        body.dark .fs-voice-page .fs-live-transcript {
+          background: #081522;
+          border-color: rgba(148,163,184,.20);
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-live-text,
+        html.dark .fs-voice-page .fs-live-text,
+        body.dark .fs-voice-page .fs-live-text {
+          color: #d8e2ed;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-live-placeholder,
+        html.dark .fs-voice-page .fs-live-placeholder,
+        body.dark .fs-voice-page .fs-live-placeholder {
+          color: #64788e;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-interim,
+        html.dark .fs-voice-page .fs-interim,
+        body.dark .fs-voice-page .fs-interim {
+          color: #8195aa;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-live-analyzing,
+        html.dark .fs-voice-page .fs-live-analyzing,
+        body.dark .fs-voice-page .fs-live-analyzing {
+          background: rgba(37,99,235,.10);
+          border-color: rgba(96,165,250,.22);
+          color: #93c5fd;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-live-result,
+        html.dark .fs-voice-page .fs-live-result,
+        body.dark .fs-voice-page .fs-live-result {
+          background: #0a1625;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-live-result-head strong,
+        html.dark .fs-voice-page .fs-live-result-head strong,
+        body.dark .fs-voice-page .fs-live-result-head strong {
+          color: #f8fafc;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-live-decision,
+        html.dark .fs-voice-page .fs-live-decision,
+        body.dark .fs-voice-page .fs-live-decision {
+          border-top-color: rgba(148,163,184,.14);
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-live-decision span,
+        html.dark .fs-voice-page .fs-live-decision span,
+        body.dark .fs-voice-page .fs-live-decision span {
+          color: #8195aa;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-live-decision strong,
+        html.dark .fs-voice-page .fs-live-decision strong,
+        body.dark .fs-voice-page .fs-live-decision strong {
+          color: #e2e8f0;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-live-reasons > div,
+        html.dark .fs-voice-page .fs-live-reasons > div,
+        body.dark .fs-voice-page .fs-live-reasons > div {
+          background: rgba(154,52,18,.12);
+          color: #fdba74;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-live-message,
+        html.dark .fs-voice-page .fs-live-message,
+        body.dark .fs-voice-page .fs-live-message {
+          color: #a7b5c7;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-live-disclaimer,
+        html.dark .fs-voice-page .fs-live-disclaimer,
+        body.dark .fs-voice-page .fs-live-disclaimer {
+          background: #0a1625;
+          border-color: rgba(148,163,184,.15);
+          color: #8195aa;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-meta span,
+        html.dark .fs-voice-page .fs-meta span,
+        body.dark .fs-voice-page .fs-meta span {
+          background: #0a1625;
+          border-color: rgba(148,163,184,.17);
+          color: #91a4b9;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-upload,
+        html.dark .fs-voice-page .fs-upload,
+        body.dark .fs-voice-page .fs-upload {
+          background: #081522;
+          border-color: rgba(96,165,250,.30);
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-upload:hover,
+        html.dark .fs-voice-page .fs-upload:hover,
+        body.dark .fs-voice-page .fs-upload:hover {
+          background: #0a1a2c;
+          border-color: #60a5fa;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-upload-icon,
+        html.dark .fs-voice-page .fs-upload-icon,
+        body.dark .fs-voice-page .fs-upload-icon {
+          background: #0d1a2a;
+          border-color: rgba(96,165,250,.22);
+          color: #60a5fa;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-upload strong,
+        html.dark .fs-voice-page .fs-upload strong,
+        body.dark .fs-voice-page .fs-upload strong {
+          color: #e2e8f0;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-upload span,
+        html.dark .fs-voice-page .fs-upload span,
+        body.dark .fs-voice-page .fs-upload span {
+          color: #71859a;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-file,
+        html.dark .fs-voice-page .fs-file,
+        body.dark .fs-voice-page .fs-file {
+          background: #0a1625;
+          border-color: rgba(148,163,184,.17);
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-file strong,
+        html.dark .fs-voice-page .fs-file strong,
+        body.dark .fs-voice-page .fs-file strong {
+          color: #e2e8f0;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-file small,
+        html.dark .fs-voice-page .fs-file small,
+        body.dark .fs-voice-page .fs-file small {
+          color: #71859a;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-divider::before,
+        html[data-theme="dark"] .fs-voice-page .fs-divider::after,
+        html.dark .fs-voice-page .fs-divider::before,
+        html.dark .fs-voice-page .fs-divider::after,
+        body.dark .fs-voice-page .fs-divider::before,
+        body.dark .fs-voice-page .fs-divider::after {
+          background: rgba(148,163,184,.14);
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-label-row label,
+        html.dark .fs-voice-page .fs-label-row label,
+        body.dark .fs-voice-page .fs-label-row label {
+          color: #dbe5ef;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-label-row span,
+        html.dark .fs-voice-page .fs-label-row span,
+        body.dark .fs-voice-page .fs-label-row span {
+          color: #71859a;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-textarea,
+        html.dark .fs-voice-page .fs-textarea,
+        body.dark .fs-voice-page .fs-textarea {
+          background: #081522;
+          color: #e2e8f0;
+          border-color: rgba(148,163,184,.22);
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-textarea:focus,
+        html.dark .fs-voice-page .fs-textarea:focus,
+        body.dark .fs-voice-page .fs-textarea:focus {
+          background: #081522;
+          border-color: #60a5fa;
+          box-shadow: 0 0 0 3px rgba(96,165,250,.12);
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-textarea::placeholder,
+        html.dark .fs-voice-page .fs-textarea::placeholder,
+        body.dark .fs-voice-page .fs-textarea::placeholder {
+          color: #61758a;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-empty h3,
+        html.dark .fs-voice-page .fs-empty h3,
+        body.dark .fs-voice-page .fs-empty h3 {
+          color: #e2e8f0;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-empty p,
+        html.dark .fs-voice-page .fs-empty p,
+        body.dark .fs-voice-page .fs-empty p {
+          color: #7f93a8;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-empty-icon,
+        html.dark .fs-voice-page .fs-empty-icon,
+        body.dark .fs-voice-page .fs-empty-icon {
+          background: rgba(59,130,246,.10);
+          border-color: rgba(96,165,250,.22);
+          color: #60a5fa;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-decision,
+        html.dark .fs-voice-page .fs-decision,
+        body.dark .fs-voice-page .fs-decision {
+          background: #0a1625;
+          border-color: rgba(148,163,184,.16);
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-decision span,
+        html.dark .fs-voice-page .fs-decision span,
+        body.dark .fs-voice-page .fs-decision span {
+          color: #8195aa;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-decision strong,
+        html.dark .fs-voice-page .fs-decision strong {
+          color: #e2e8f0;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-note,
+        html.dark .fs-voice-page .fs-note,
+        body.dark .fs-voice-page .fs-note {
+          background: #0a1625;
+          border-color: rgba(148,163,184,.16);
+          color: #9fb0c4;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-confidence,
+        html.dark .fs-voice-page .fs-confidence,
+        body.dark .fs-voice-page .fs-confidence {
+          border-color: rgba(148,163,184,.16);
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-confidence-top,
+        html.dark .fs-voice-page .fs-confidence-top,
+        body.dark .fs-voice-page .fs-confidence-top {
+          color: #8195aa;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-confidence-top strong,
+        html.dark .fs-voice-page .fs-confidence-top strong,
+        body.dark .fs-voice-page .fs-confidence-top strong {
+          color: #e2e8f0;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-track,
+        html.dark .fs-voice-page .fs-track,
+        body.dark .fs-voice-page .fs-track {
+          background: #223247;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-section-title h3,
+        html.dark .fs-voice-page .fs-section-title h3,
+        body.dark .fs-voice-page .fs-section-title h3 {
+          color: #dbe5ef;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-reason,
+        html.dark .fs-voice-page .fs-reason,
+        body.dark .fs-voice-page .fs-reason {
+          background: #0a1625;
+          border-color: rgba(148,163,184,.15);
+          color: #a7b5c7;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-safe,
+        html.dark .fs-voice-page .fs-safe,
+        body.dark .fs-voice-page .fs-safe {
+          background: rgba(16,185,129,.10);
+          border-color: rgba(52,211,153,.24);
+          color: #6ee7b7;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-signals,
+        html.dark .fs-voice-page .fs-signals,
+        body.dark .fs-voice-page .fs-signals {
+          border-top-color: rgba(148,163,184,.12);
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-signal,
+        html.dark .fs-voice-page .fs-signal,
+        body.dark .fs-voice-page .fs-signal {
+          background: rgba(59,130,246,.10);
+          border-color: rgba(96,165,250,.20);
+          color: #93c5fd;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-footer-item,
+        html.dark .fs-voice-page .fs-footer-item,
+        body.dark .fs-voice-page .fs-footer-item {
+          background: #0d1a2a;
+          border-color: rgba(148,163,184,.16);
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-footer-item span,
+        html.dark .fs-voice-page .fs-footer-item span,
+        body.dark .fs-voice-page .fs-footer-item span {
+          color: #91a4b9;
+        }
+
+        html[data-theme="dark"] .fs-voice-page .fs-error,
+        html.dark .fs-voice-page .fs-error,
+        body.dark .fs-voice-page .fs-error {
+          background: rgba(239,68,68,.10);
+          border-color: rgba(239,68,68,.25);
+          color: #fca5a5;
+        }
+
+        /* Keep browser autofill from turning voice-page inputs white. */
+        html[data-theme="dark"] .fs-voice-page input:-webkit-autofill,
+        html[data-theme="dark"] .fs-voice-page input:-webkit-autofill:hover,
+        html[data-theme="dark"] .fs-voice-page input:-webkit-autofill:focus,
+        html.dark .fs-voice-page input:-webkit-autofill,
+        html.dark .fs-voice-page input:-webkit-autofill:hover,
+        html.dark .fs-voice-page input:-webkit-autofill:focus,
+        body.dark .fs-voice-page input:-webkit-autofill,
+        body.dark .fs-voice-page input:-webkit-autofill:hover,
+        body.dark .fs-voice-page input:-webkit-autofill:focus {
+          -webkit-text-fill-color: #f8fafc !important;
+          -webkit-box-shadow: 0 0 0 1000px #081522 inset !important;
+          box-shadow: 0 0 0 1000px #081522 inset !important;
+          background-color: #081522 !important;
+          caret-color: #ffffff !important;
+        }
+
 
         @media (max-width: 900px) {
           .fs-voice-grid { grid-template-columns: 1fr; }

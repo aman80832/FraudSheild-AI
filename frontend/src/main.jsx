@@ -3,7 +3,12 @@ import { createRoot } from "react-dom/client";
 
 import "./index.css";
 import "../figma-ui/index.css";
+import "./theme.css";
+
 import App from "./App.jsx";
+import { ThemeProvider } from "./context/ThemeContext.jsx";
+import { LanguageProvider } from "./context/LanguageContext.jsx";
+import GlobalLanguageApplier from "./context/GlobalLanguageApplier.jsx";
 
 const rootElement = document.getElementById("root");
 
@@ -15,6 +20,11 @@ if (!rootElement) {
 
 createRoot(rootElement).render(
   <StrictMode>
-    <App />
+    <ThemeProvider>
+      <LanguageProvider>
+        <GlobalLanguageApplier />
+        <App />
+      </LanguageProvider>
+    </ThemeProvider>
   </StrictMode>
 );

@@ -1,0 +1,3142 @@
+/* =========================================================
+   FRAUDSHIELD AI
+   GLOBAL LIGHT / DARK THEME
+   =========================================================
+
+   LIGHT MODE
+   ----------
+   Your existing CSS controls the original light design.
+
+   DARK MODE
+   ---------
+   This file only changes:
+   - backgrounds
+   - text
+   - borders
+   - inputs
+   - cards
+   - navigation
+   - shadows
+
+   It does NOT change:
+   - layout
+   - spacing
+   - sizing
+   - animations
+   - functionality
+   - page structure
+
+   Theme activation:
+       html[data-theme="dark"]
+
+   Also supports:
+       html.dark
+       body.dark
+
+========================================================= */
+
+
+/* =========================================================
+   1. LIGHT THEME VARIABLES
+========================================================= */
+
+:root {
+
+  --fs-bg: #f7f9fc;
+  --fs-bg-secondary: #eef3f9;
+
+  --fs-card: #ffffff;
+  --fs-card-secondary: #f8fafc;
+
+  --fs-text: #111827;
+  --fs-text-secondary: #475569;
+  --fs-text-muted: #64748b;
+
+  --fs-border: #dce3ec;
+  --fs-border-light: #e8edf3;
+
+  --fs-input-bg: #ffffff;
+  --fs-input-border: #d1d5db;
+
+  --fs-primary: #2563eb;
+  --fs-primary-soft: #eff6ff;
+
+  --fs-success: #22c55e;
+  --fs-danger: #ef4444;
+  --fs-warning: #f59e0b;
+
+  --fs-shadow:
+    rgba(15, 23, 42, 0.08);
+}
+
+
+/* =========================================================
+   2. DARK THEME VARIABLES
+========================================================= */
+
+html[data-theme="dark"],
+html.dark,
+body.dark {
+
+  --fs-bg: #07111f;
+  --fs-bg-secondary: #0a1625;
+
+  --fs-card: #0d1a2a;
+  --fs-card-secondary: #101f32;
+
+  --fs-text: #f8fafc;
+  --fs-text-secondary: #c0ccda;
+  --fs-text-muted: #8fa3b8;
+
+  --fs-border:
+    rgba(148, 163, 184, 0.17);
+
+  --fs-border-light:
+    rgba(148, 163, 184, 0.10);
+
+  --fs-input-bg: #081522;
+
+  --fs-input-border:
+    rgba(148, 163, 184, 0.25);
+
+  --fs-primary: #60a5fa;
+
+  --fs-primary-soft:
+    rgba(59, 130, 246, 0.12);
+
+  --fs-success: #34d399;
+  --fs-danger: #ef4444;
+  --fs-warning: #f59e0b;
+
+  --fs-shadow:
+    rgba(0, 0, 0, 0.38);
+}
+
+
+/* =========================================================
+   3. GLOBAL DARK MODE
+========================================================= */
+
+html[data-theme="dark"] {
+  background: #07111f !important;
+  color-scheme: dark;
+}
+
+html.dark {
+  background: #07111f !important;
+}
+
+html[data-theme="dark"] body,
+html.dark body,
+body.dark {
+
+  background: #07111f !important;
+  color: #f8fafc !important;
+}
+
+
+/* React root */
+
+html[data-theme="dark"] #root,
+html.dark #root,
+body.dark #root {
+
+  background: #07111f !important;
+  color: #f8fafc !important;
+}
+
+
+/* =========================================================
+   4. GLOBAL TEXT
+========================================================= */
+
+html[data-theme="dark"] h1,
+html[data-theme="dark"] h2,
+html[data-theme="dark"] h3,
+html[data-theme="dark"] h4,
+html[data-theme="dark"] h5,
+html[data-theme="dark"] h6,
+
+html.dark h1,
+html.dark h2,
+html.dark h3,
+html.dark h4,
+html.dark h5,
+html.dark h6,
+
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark h4,
+body.dark h5,
+body.dark h6 {
+
+  color: #f8fafc !important;
+}
+
+
+html[data-theme="dark"] p,
+html.dark p,
+body.dark p {
+
+  color: #a7b5c7;
+}
+
+
+/* =========================================================
+   5. GLOBAL LINKS
+========================================================= */
+
+html[data-theme="dark"] a,
+html.dark a,
+body.dark a {
+
+  color: #60a5fa;
+}
+
+
+html[data-theme="dark"] a:hover,
+html.dark a:hover,
+body.dark a:hover {
+
+  color: #93c5fd;
+}
+
+
+/* =========================================================
+   6. GLOBAL FORM ELEMENTS
+========================================================= */
+
+html[data-theme="dark"] input,
+html[data-theme="dark"] textarea,
+html[data-theme="dark"] select,
+
+html.dark input,
+html.dark textarea,
+html.dark select,
+
+body.dark input,
+body.dark textarea,
+body.dark select {
+
+  background: #081522 !important;
+
+  color: #f8fafc !important;
+
+  border-color:
+    rgba(148, 163, 184, 0.25) !important;
+
+  box-shadow: none !important;
+}
+
+
+/* Placeholder */
+
+html[data-theme="dark"] input::placeholder,
+html[data-theme="dark"] textarea::placeholder,
+
+html.dark input::placeholder,
+html.dark textarea::placeholder,
+
+body.dark input::placeholder,
+body.dark textarea::placeholder {
+
+  color: #64748b !important;
+}
+
+
+/* Focus */
+
+html[data-theme="dark"] input:focus,
+html[data-theme="dark"] textarea:focus,
+html[data-theme="dark"] select:focus,
+
+html.dark input:focus,
+html.dark textarea:focus,
+html.dark select:focus,
+
+body.dark input:focus,
+body.dark textarea:focus,
+body.dark select:focus {
+
+  background: #081522 !important;
+
+  color: #ffffff !important;
+
+  border-color:
+    #60a5fa !important;
+
+  outline: none !important;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(96, 165, 250, 0.12) !important;
+}
+
+
+/* =========================================================
+   7. CHROME AUTOFILL FIX
+   Prevents white Gmail/password fields
+========================================================= */
+
+html[data-theme="dark"] input:-webkit-autofill,
+html[data-theme="dark"] input:-webkit-autofill:hover,
+html[data-theme="dark"] input:-webkit-autofill:focus,
+html[data-theme="dark"] input:-webkit-autofill:active,
+
+html.dark input:-webkit-autofill,
+html.dark input:-webkit-autofill:hover,
+html.dark input:-webkit-autofill:focus,
+html.dark input:-webkit-autofill:active,
+
+body.dark input:-webkit-autofill,
+body.dark input:-webkit-autofill:hover,
+body.dark input:-webkit-autofill:focus,
+body.dark input:-webkit-autofill:active {
+
+  -webkit-text-fill-color:
+    #f8fafc !important;
+
+  -webkit-box-shadow:
+    0 0 0 1000px
+    #081522 inset !important;
+
+  box-shadow:
+    0 0 0 1000px
+    #081522 inset !important;
+
+  background-color:
+    #081522 !important;
+
+  caret-color:
+    #ffffff !important;
+
+  transition:
+    background-color
+    9999s ease-out 0s !important;
+}
+
+
+/* =========================================================
+   8. LANDING PAGE
+========================================================= */
+
+html[data-theme="dark"] .landing-page,
+html.dark .landing-page,
+body.dark .landing-page {
+
+  background:
+    #07111f !important;
+
+  color:
+    #f8fafc !important;
+}
+
+
+/* Navbar */
+
+html[data-theme="dark"] .navbar,
+html.dark .navbar,
+body.dark .navbar {
+
+  background:
+    rgba(7, 17, 31, 0.96) !important;
+
+  border-color:
+    rgba(148, 163, 184, 0.15) !important;
+
+  backdrop-filter:
+    blur(14px);
+}
+
+
+/* Brand */
+
+html[data-theme="dark"] .brand,
+html.dark .brand,
+body.dark .brand {
+
+  color:
+    #f8fafc !important;
+}
+
+
+/* Nav links */
+
+html[data-theme="dark"] .nav-links a,
+html.dark .nav-links a,
+body.dark .nav-links a {
+
+  color:
+    #94a3b8 !important;
+}
+
+
+html[data-theme="dark"] .nav-links a:hover,
+html.dark .nav-links a:hover,
+body.dark .nav-links a:hover {
+
+  color:
+    #60a5fa !important;
+}
+
+
+/* Hero */
+
+html[data-theme="dark"] .hero,
+html.dark .hero,
+body.dark .hero {
+
+  background:
+
+    radial-gradient(
+      circle at 80% 30%,
+      rgba(37, 99, 235, 0.16),
+      transparent 35%
+    ),
+
+    #07111f !important;
+}
+
+
+/* Hero heading */
+
+html[data-theme="dark"] .hero h1,
+html.dark .hero h1,
+body.dark .hero h1 {
+
+  color:
+    #f8fafc !important;
+}
+
+
+html[data-theme="dark"] .hero h1 span,
+html.dark .hero h1 span,
+body.dark .hero h1 span {
+
+  color:
+    #60a5fa !important;
+}
+
+
+/* Hero paragraph */
+
+html[data-theme="dark"] .hero p,
+html.dark .hero p,
+body.dark .hero p {
+
+  color:
+    #a7b5c7 !important;
+}
+
+
+/* Risk card */
+
+html[data-theme="dark"] .risk-card,
+html.dark .risk-card,
+body.dark .risk-card {
+
+  background:
+    #0d1a2a !important;
+
+  border-color:
+    rgba(148, 163, 184, 0.16) !important;
+
+  box-shadow:
+    0 25px 70px
+    rgba(0, 0, 0, 0.40) !important;
+}
+
+
+/* Features */
+
+html[data-theme="dark"] .features-section,
+html[data-theme="dark"] .how-section,
+
+html.dark .features-section,
+html.dark .how-section,
+
+body.dark .features-section,
+body.dark .how-section {
+
+  background:
+    #07111f !important;
+}
+
+
+/* Feature cards */
+
+html[data-theme="dark"] .feature-card,
+html.dark .feature-card,
+body.dark .feature-card {
+
+  background:
+    #0d1a2a !important;
+
+  border-color:
+    rgba(148, 163, 184, 0.16) !important;
+
+  color:
+    #f8fafc !important;
+}
+
+
+html[data-theme="dark"] .feature-card p,
+html.dark .feature-card p,
+body.dark .feature-card p {
+
+  color:
+    #a7b5c7 !important;
+}
+
+
+/* Footer */
+
+html[data-theme="dark"] footer,
+html.dark footer,
+body.dark footer {
+
+  background:
+    #050b16 !important;
+
+  color:
+    #f8fafc !important;
+
+  border-color:
+    rgba(148, 163, 184, 0.12) !important;
+}
+
+
+/* =========================================================
+   9. LOGIN / REGISTER
+========================================================= */
+
+html[data-theme="dark"] .login-page,
+html[data-theme="dark"] .register-page,
+html[data-theme="dark"] .auth-page,
+
+html.dark .login-page,
+html.dark .register-page,
+html.dark .auth-page,
+
+body.dark .login-page,
+body.dark .register-page,
+body.dark .auth-page {
+
+  background:
+
+    radial-gradient(
+      circle at 50% 15%,
+      rgba(37, 99, 235, 0.13),
+      transparent 42%
+    ),
+
+    #07111f !important;
+
+  color:
+    #f8fafc !important;
+}
+
+
+/* Authentication card */
+
+html[data-theme="dark"] .login-card,
+html[data-theme="dark"] .register-card,
+html[data-theme="dark"] .auth-card,
+
+html.dark .login-card,
+html.dark .register-card,
+html.dark .auth-card,
+
+body.dark .login-card,
+body.dark .register-card,
+body.dark .auth-card {
+
+  background:
+    #0d1a2a !important;
+
+  border-color:
+    rgba(148, 163, 184, 0.17) !important;
+
+  color:
+    #f8fafc !important;
+
+  box-shadow:
+    0 25px 60px
+    rgba(0, 0, 0, 0.35) !important;
+}
+
+
+/* Login labels */
+
+html[data-theme="dark"] .login-page label,
+html[data-theme="dark"] .auth-page label,
+
+html.dark .login-page label,
+html.dark .auth-page label,
+
+body.dark .login-page label,
+body.dark .auth-page label {
+
+  color:
+    #e2e8f0 !important;
+}
+
+
+/* Login input */
+
+html[data-theme="dark"] .login-page input,
+html[data-theme="dark"] .auth-page input,
+
+html.dark .login-page input,
+html.dark .auth-page input,
+
+body.dark .login-page input,
+body.dark .auth-page input {
+
+  background:
+    #081522 !important;
+
+  color:
+    #f8fafc !important;
+
+  border:
+    1px solid
+    rgba(148, 163, 184, 0.25) !important;
+
+  box-shadow:
+    none !important;
+}
+
+
+/* Login input focus */
+
+html[data-theme="dark"] .login-page input:focus,
+html[data-theme="dark"] .auth-page input:focus,
+
+html.dark .login-page input:focus,
+html.dark .auth-page input:focus,
+
+body.dark .login-page input:focus,
+body.dark .auth-page input:focus {
+
+  background:
+    #081522 !important;
+
+  color:
+    #ffffff !important;
+
+  border-color:
+    #60a5fa !important;
+
+  outline:
+    none !important;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(96, 165, 250, 0.12) !important;
+}
+
+
+/* Google button */
+
+html[data-theme="dark"] .login-page .google-btn,
+html.dark .login-page .google-btn,
+body.dark .login-page .google-btn {
+
+  background:
+    #0d1a2a !important;
+
+  color:
+    #f8fafc !important;
+
+  border-color:
+    rgba(148, 163, 184, 0.20) !important;
+}
+
+
+/* =========================================================
+   10. GLOBAL CARDS
+========================================================= */
+
+html[data-theme="dark"] .card,
+html[data-theme="dark"] .panel,
+html[data-theme="dark"] .content-card,
+html[data-theme="dark"] .section-card,
+html[data-theme="dark"] .info-card,
+html[data-theme="dark"] .stat-card,
+html[data-theme="dark"] .data-card,
+
+html.dark .card,
+html.dark .panel,
+html.dark .content-card,
+html.dark .section-card,
+html.dark .info-card,
+html.dark .stat-card,
+html.dark .data-card,
+
+body.dark .card,
+body.dark .panel,
+body.dark .content-card,
+body.dark .section-card,
+body.dark .info-card,
+body.dark .stat-card,
+body.dark .data-card {
+
+  background:
+    #0d1a2a !important;
+
+  color:
+    #f8fafc !important;
+
+  border-color:
+    rgba(148, 163, 184, 0.16) !important;
+}
+
+
+/* =========================================================
+   11. DASHBOARD
+========================================================= */
+
+html[data-theme="dark"] .dashboard-page,
+html.dark .dashboard-page,
+body.dark .dashboard-page {
+
+  background:
+    #07111f !important;
+
+  color:
+    #f8fafc !important;
+}
+
+
+html[data-theme="dark"] .dashboard-card,
+html[data-theme="dark"] .dashboard-panel,
+
+html.dark .dashboard-card,
+html.dark .dashboard-panel,
+
+body.dark .dashboard-card,
+body.dark .dashboard-panel {
+
+  background:
+    #0d1a2a !important;
+
+  border-color:
+    rgba(148, 163, 184, 0.16) !important;
+}
+
+
+/* =========================================================
+   12. TRANSACTION
+========================================================= */
+
+html[data-theme="dark"] .transaction-page,
+html.dark .transaction-page,
+body.dark .transaction-page {
+
+  background:
+    #07111f !important;
+
+  color:
+    #f8fafc !important;
+}
+
+
+html[data-theme="dark"] .transaction-card,
+html[data-theme="dark"] .transaction-section,
+
+html.dark .transaction-card,
+html.dark .transaction-section,
+
+body.dark .transaction-card,
+body.dark .transaction-section {
+
+  background:
+    #0d1a2a !important;
+
+  border-color:
+    rgba(148, 163, 184, 0.16) !important;
+
+  color:
+    #f8fafc !important;
+}
+
+
+/* =========================================================
+   13. ALERTS
+========================================================= */
+
+html[data-theme="dark"] .alerts-page,
+html.dark .alerts-page,
+body.dark .alerts-page {
+
+  background:
+    #07111f !important;
+
+  color:
+    #f8fafc !important;
+}
+
+
+html[data-theme="dark"] .alert-card,
+html[data-theme="dark"] .alerts-card,
+
+html.dark .alert-card,
+html.dark .alerts-card,
+
+body.dark .alert-card,
+body.dark .alerts-card {
+
+  background:
+    #0d1a2a !important;
+
+  border-color:
+    rgba(148, 163, 184, 0.16) !important;
+}
+
+
+/* =========================================================
+   14. VOICE PHISHING
+   =========================================================
+
+   IMPORTANT:
+   Add this to the outermost VoicePhishing JSX element:
+
+   data-page="voice-phishing"
+
+========================================================= */
+
+html[data-theme="dark"] [data-page="voice-phishing"],
+html.dark [data-page="voice-phishing"],
+body.dark [data-page="voice-phishing"] {
+
+  background:
+    #07111f !important;
+
+  color:
+    #f8fafc !important;
+}
+
+
+/* Voice page direct sections */
+
+html[data-theme="dark"] [data-page="voice-phishing"] > *,
+html.dark [data-page="voice-phishing"] > *,
+body.dark [data-page="voice-phishing"] > * {
+
+  border-color:
+    rgba(148, 163, 184, 0.16);
+}
+
+
+/* Voice cards */
+
+html[data-theme="dark"] [data-page="voice-phishing"] .voice-card,
+html[data-theme="dark"] [data-page="voice-phishing"] .voice-panel,
+html[data-theme="dark"] [data-page="voice-phishing"] .voice-container,
+
+html.dark [data-page="voice-phishing"] .voice-card,
+html.dark [data-page="voice-phishing"] .voice-panel,
+html.dark [data-page="voice-phishing"] .voice-container,
+
+body.dark [data-page="voice-phishing"] .voice-card,
+body.dark [data-page="voice-phishing"] .voice-panel,
+body.dark [data-page="voice-phishing"] .voice-container {
+
+  background:
+    #0d1a2a !important;
+
+  color:
+    #f8fafc !important;
+
+  border-color:
+    rgba(148, 163, 184, 0.16) !important;
+}
+
+
+/* Voice headings */
+
+html[data-theme="dark"] [data-page="voice-phishing"] h1,
+html[data-theme="dark"] [data-page="voice-phishing"] h2,
+html[data-theme="dark"] [data-page="voice-phishing"] h3,
+html[data-theme="dark"] [data-page="voice-phishing"] h4,
+
+html.dark [data-page="voice-phishing"] h1,
+html.dark [data-page="voice-phishing"] h2,
+html.dark [data-page="voice-phishing"] h3,
+html.dark [data-page="voice-phishing"] h4,
+
+body.dark [data-page="voice-phishing"] h1,
+body.dark [data-page="voice-phishing"] h2,
+body.dark [data-page="voice-phishing"] h3,
+body.dark [data-page="voice-phishing"] h4 {
+
+  color:
+    #f8fafc !important;
+}
+
+
+/* Voice text */
+
+html[data-theme="dark"] [data-page="voice-phishing"] p,
+html.dark [data-page="voice-phishing"] p,
+body.dark [data-page="voice-phishing"] p {
+
+  color:
+    #a7b5c7 !important;
+}
+
+
+/* Voice inputs */
+
+html[data-theme="dark"] [data-page="voice-phishing"] input,
+html[data-theme="dark"] [data-page="voice-phishing"] textarea,
+html[data-theme="dark"] [data-page="voice-phishing"] select,
+
+html.dark [data-page="voice-phishing"] input,
+html.dark [data-page="voice-phishing"] textarea,
+html.dark [data-page="voice-phishing"] select,
+
+body.dark [data-page="voice-phishing"] input,
+body.dark [data-page="voice-phishing"] textarea,
+body.dark [data-page="voice-phishing"] select {
+
+  background:
+    #081522 !important;
+
+  color:
+    #f8fafc !important;
+
+  border-color:
+    rgba(148, 163, 184, 0.22) !important;
+}
+
+
+/* Voice textarea */
+
+html[data-theme="dark"] [data-page="voice-phishing"] textarea,
+html.dark [data-page="voice-phishing"] textarea,
+body.dark [data-page="voice-phishing"] textarea {
+
+  background:
+    #081522 !important;
+
+  color:
+    #e2e8f0 !important;
+}
+
+
+/* Voice upload */
+
+html[data-theme="dark"] [data-page="voice-phishing"] .voice-upload,
+html.dark [data-page="voice-phishing"] .voice-upload,
+body.dark [data-page="voice-phishing"] .voice-upload {
+
+  background:
+    #0a1625 !important;
+
+  border-color:
+    rgba(96, 165, 250, 0.25) !important;
+}
+
+
+/* =========================================================
+   15. VOICE ANALYZER
+========================================================= */
+
+html[data-theme="dark"] .voice-analyzer-page,
+html[data-theme="dark"] .voice-analyzer,
+
+html.dark .voice-analyzer-page,
+html.dark .voice-analyzer,
+
+body.dark .voice-analyzer-page,
+body.dark .voice-analyzer {
+
+  background:
+    #07111f !important;
+
+  color:
+    #f8fafc !important;
+}
+
+
+html[data-theme="dark"] .analyzer-card,
+html[data-theme="dark"] .analysis-card,
+html[data-theme="dark"] .assessment-card,
+
+html.dark .analyzer-card,
+html.dark .analysis-card,
+html.dark .assessment-card,
+
+body.dark .analyzer-card,
+body.dark .analysis-card,
+body.dark .assessment-card {
+
+  background:
+    #0d1a2a !important;
+
+  border-color:
+    rgba(148, 163, 184, 0.16) !important;
+
+  color:
+    #f8fafc !important;
+}
+
+
+/* =========================================================
+   16. FRAUD ANALYTICS
+========================================================= */
+
+html[data-theme="dark"] .analytics-page,
+html.dark .analytics-page,
+body.dark .analytics-page {
+
+  background:
+    #07111f !important;
+
+  color:
+    #f8fafc !important;
+}
+
+
+html[data-theme="dark"] .analytics-card,
+html[data-theme="dark"] .analytics-panel,
+html[data-theme="dark"] .analytics-stat,
+
+html.dark .analytics-card,
+html.dark .analytics-panel,
+html.dark .analytics-stat,
+
+body.dark .analytics-card,
+body.dark .analytics-panel,
+body.dark .analytics-stat {
+
+  background:
+    #0d1a2a !important;
+
+  border-color:
+    rgba(148, 163, 184, 0.16) !important;
+}
+
+
+/* =========================================================
+   17. FRAUD NETWORK
+========================================================= */
+
+html[data-theme="dark"] .fraud-network-page,
+html[data-theme="dark"] .network-page,
+
+html.dark .fraud-network-page,
+html.dark .network-page,
+
+body.dark .fraud-network-page,
+body.dark .network-page {
+
+  background:
+    #07111f !important;
+
+  color:
+    #f8fafc !important;
+}
+
+
+/* =========================================================
+   18. GEOGRAPHIC FRAUD
+========================================================= */
+
+html[data-theme="dark"] .geographic-fraud-page,
+html[data-theme="dark"] .geographic-page,
+
+html.dark .geographic-fraud-page,
+html.dark .geographic-page,
+
+body.dark .geographic-fraud-page,
+body.dark .geographic-page {
+
+  background:
+    #07111f !important;
+
+  color:
+    #f8fafc !important;
+}
+
+
+/* =========================================================
+   19. USER RISK PROFILE
+=========================================================
+
+   IMPORTANT:
+   Add this to the outermost UserRiskProfile JSX element:
+
+   data-page="user-risk"
+
+========================================================= */
+
+html[data-theme="dark"] [data-page="user-risk"],
+html.dark [data-page="user-risk"],
+body.dark [data-page="user-risk"] {
+
+  background:
+    #07111f !important;
+
+  color:
+    #f8fafc !important;
+}
+
+
+/* User Risk headings */
+
+html[data-theme="dark"] [data-page="user-risk"] h1,
+html[data-theme="dark"] [data-page="user-risk"] h2,
+html[data-theme="dark"] [data-page="user-risk"] h3,
+html[data-theme="dark"] [data-page="user-risk"] h4,
+
+html.dark [data-page="user-risk"] h1,
+html.dark [data-page="user-risk"] h2,
+html.dark [data-page="user-risk"] h3,
+html.dark [data-page="user-risk"] h4,
+
+body.dark [data-page="user-risk"] h1,
+body.dark [data-page="user-risk"] h2,
+body.dark [data-page="user-risk"] h3,
+body.dark [data-page="user-risk"] h4 {
+
+  color:
+    #f8fafc !important;
+}
+
+
+/* User Risk paragraphs */
+
+html[data-theme="dark"] [data-page="user-risk"] p,
+html.dark [data-page="user-risk"] p,
+body.dark [data-page="user-risk"] p {
+
+  color:
+    #a7b5c7 !important;
+}
+
+
+/* User Risk labels */
+
+html[data-theme="dark"] [data-page="user-risk"] label,
+html.dark [data-page="user-risk"] label,
+body.dark [data-page="user-risk"] label {
+
+  color:
+    #cbd5e1 !important;
+}
+
+
+/* User Risk cards */
+
+html[data-theme="dark"] [data-page="user-risk"] .card,
+html[data-theme="dark"] [data-page="user-risk"] .panel,
+html[data-theme="dark"] [data-page="user-risk"] .section-card,
+html[data-theme="dark"] [data-page="user-risk"] .stat-card,
+html[data-theme="dark"] [data-page="user-risk"] .info-card,
+
+html.dark [data-page="user-risk"] .card,
+html.dark [data-page="user-risk"] .panel,
+html.dark [data-page="user-risk"] .section-card,
+html.dark [data-page="user-risk"] .stat-card,
+html.dark [data-page="user-risk"] .info-card,
+
+body.dark [data-page="user-risk"] .card,
+body.dark [data-page="user-risk"] .panel,
+body.dark [data-page="user-risk"] .section-card,
+body.dark [data-page="user-risk"] .stat-card,
+body.dark [data-page="user-risk"] .info-card {
+
+  background:
+    #0d1a2a !important;
+
+  color:
+    #f8fafc !important;
+
+  border-color:
+    rgba(148, 163, 184, 0.16) !important;
+}
+
+
+/* User Risk devices */
+
+html[data-theme="dark"] [data-page="user-risk"] .device-card,
+html[data-theme="dark"] [data-page="user-risk"] .beneficiary-card,
+html[data-theme="dark"] [data-page="user-risk"] .location-card,
+
+html.dark [data-page="user-risk"] .device-card,
+html.dark [data-page="user-risk"] .beneficiary-card,
+html.dark [data-page="user-risk"] .location-card,
+
+body.dark [data-page="user-risk"] .device-card,
+body.dark [data-page="user-risk"] .beneficiary-card,
+body.dark [data-page="user-risk"] .location-card {
+
+  background:
+    #0d1a2a !important;
+
+  color:
+    #f8fafc !important;
+
+  border-color:
+    rgba(148, 163, 184, 0.16) !important;
+}
+
+
+/* User Risk tags */
+
+html[data-theme="dark"] [data-page="user-risk"] .tag,
+html[data-theme="dark"] [data-page="user-risk"] .chip,
+html[data-theme="dark"] [data-page="user-risk"] .badge,
+
+html.dark [data-page="user-risk"] .tag,
+html.dark [data-page="user-risk"] .chip,
+html.dark [data-page="user-risk"] .badge,
+
+body.dark [data-page="user-risk"] .tag,
+body.dark [data-page="user-risk"] .chip,
+body.dark [data-page="user-risk"] .badge {
+
+  background:
+    #101f32 !important;
+
+  color:
+    #a7b5c7 !important;
+
+  border-color:
+    rgba(148, 163, 184, 0.16) !important;
+}
+
+
+/* =========================================================
+   20. DEVICE / BENEFICIARY
+========================================================= */
+
+html[data-theme="dark"] .device-page,
+html[data-theme="dark"] .device-intelligence-page,
+html[data-theme="dark"] .beneficiary-page,
+
+html.dark .device-page,
+html.dark .device-intelligence-page,
+html.dark .beneficiary-page,
+
+body.dark .device-page,
+body.dark .device-intelligence-page,
+body.dark .beneficiary-page {
+
+  background:
+    #07111f !important;
+
+  color:
+    #f8fafc !important;
+}
+
+
+/* =========================================================
+   21. ADMIN
+========================================================= */
+
+html[data-theme="dark"] .admin-page,
+html[data-theme="dark"] .admin-dashboard,
+
+html.dark .admin-page,
+html.dark .admin-dashboard,
+
+body.dark .admin-page,
+body.dark .admin-dashboard {
+
+  background:
+    #07111f !important;
+
+  color:
+    #f8fafc !important;
+}
+
+
+/* =========================================================
+   22. COMMON WHITE BACKGROUND CLASSES
+========================================================= */
+
+html[data-theme="dark"] .bg-white,
+html[data-theme="dark"] .background-white,
+html[data-theme="dark"] .white-bg,
+
+html.dark .bg-white,
+html.dark .background-white,
+html.dark .white-bg,
+
+body.dark .bg-white,
+body.dark .background-white,
+body.dark .white-bg {
+
+  background:
+    #0d1a2a !important;
+}
+
+
+/* =========================================================
+   23. TABLES
+========================================================= */
+
+html[data-theme="dark"] table,
+html.dark table,
+body.dark table {
+
+  color:
+    #e2e8f0 !important;
+}
+
+
+html[data-theme="dark"] th,
+html.dark th,
+body.dark th {
+
+  background:
+    #0a1625 !important;
+
+  color:
+    #e2e8f0 !important;
+
+  border-color:
+    rgba(148, 163, 184, 0.16) !important;
+}
+
+
+html[data-theme="dark"] td,
+html.dark td,
+body.dark td {
+
+  background:
+    transparent !important;
+
+  color:
+    #a7b5c7 !important;
+
+  border-color:
+    rgba(148, 163, 184, 0.12) !important;
+}
+
+
+/* =========================================================
+   24. HEADERS / NAVIGATION
+========================================================= */
+
+html[data-theme="dark"] header,
+html.dark header,
+body.dark header {
+
+  background:
+    #07111f !important;
+
+  color:
+    #f8fafc !important;
+
+  border-color:
+    rgba(148, 163, 184, 0.15) !important;
+}
+
+
+html[data-theme="dark"] .app-header,
+html[data-theme="dark"] .page-header,
+html[data-theme="dark"] .dashboard-header,
+html[data-theme="dark"] .top-header,
+
+html.dark .app-header,
+html.dark .page-header,
+html.dark .dashboard-header,
+html.dark .top-header,
+
+body.dark .app-header,
+body.dark .page-header,
+body.dark .dashboard-header,
+body.dark .top-header {
+
+  background:
+    #07111f !important;
+
+  color:
+    #f8fafc !important;
+
+  border-color:
+    rgba(148, 163, 184, 0.15) !important;
+}
+
+
+/* =========================================================
+   25. OUTLINE / SECONDARY BUTTONS
+========================================================= */
+
+html[data-theme="dark"] .secondary-btn,
+html[data-theme="dark"] .outline-btn,
+html[data-theme="dark"] .ghost-btn,
+html[data-theme="dark"] .back-btn,
+
+html.dark .secondary-btn,
+html.dark .outline-btn,
+html.dark .ghost-btn,
+html.dark .back-btn,
+
+body.dark .secondary-btn,
+body.dark .outline-btn,
+body.dark .ghost-btn,
+body.dark .back-btn {
+
+  background:
+    #0d1a2a !important;
+
+  color:
+    #e2e8f0 !important;
+
+  border-color:
+    rgba(148, 163, 184, 0.22) !important;
+}
+
+
+/* =========================================================
+   26. DIVIDERS
+========================================================= */
+
+html[data-theme="dark"] hr,
+html.dark hr,
+body.dark hr {
+
+  border-color:
+    rgba(148, 163, 184, 0.14) !important;
+}
+
+
+/* =========================================================
+   27. THEME TOGGLE
+========================================================= */
+
+.theme-toggle {
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  width:
+    40px;
+
+  height:
+    40px;
+
+  padding:
+    0;
+
+  border-radius:
+    10px;
+
+  cursor:
+    pointer;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+
+html[data-theme="dark"] .theme-toggle,
+html.dark .theme-toggle,
+body.dark .theme-toggle {
+
+  background:
+    rgba(96, 165, 250, 0.10) !important;
+
+  border:
+    1px solid
+    rgba(96, 165, 250, 0.25) !important;
+
+  color:
+    #60a5fa !important;
+}
+
+
+.theme-toggle:hover {
+
+  transform:
+    translateY(-2px);
+}
+
+
+/* =========================================================
+   28. SCROLLBAR
+========================================================= */
+
+html[data-theme="dark"] ::-webkit-scrollbar,
+html.dark ::-webkit-scrollbar,
+body.dark ::-webkit-scrollbar {
+
+  width:
+    10px;
+
+  height:
+    10px;
+}
+
+
+html[data-theme="dark"] ::-webkit-scrollbar-track,
+html.dark ::-webkit-scrollbar-track,
+body.dark ::-webkit-scrollbar-track {
+
+  background:
+    #050b16;
+}
+
+
+html[data-theme="dark"] ::-webkit-scrollbar-thumb,
+html.dark ::-webkit-scrollbar-thumb,
+body.dark ::-webkit-scrollbar-thumb {
+
+  background:
+    #26384d;
+
+  border-radius:
+    10px;
+}
+
+
+html[data-theme="dark"] ::-webkit-scrollbar-thumb:hover,
+html.dark ::-webkit-scrollbar-thumb:hover,
+body.dark ::-webkit-scrollbar-thumb:hover {
+
+  background:
+    #3b536d;
+}
+
+
+/* =========================================================
+   29. SELECTION
+========================================================= */
+
+html[data-theme="dark"] ::selection,
+html.dark ::selection,
+body.dark ::selection {
+
+  background:
+    rgba(96, 165, 250, 0.35);
+
+  color:
+    #ffffff;
+}
+
+
+/* =========================================================
+   30. THEME TRANSITIONS
+========================================================= */
+
+html[data-theme="dark"] body,
+html[data-theme="dark"] .landing-page,
+html[data-theme="dark"] .navbar,
+html[data-theme="dark"] .hero,
+html[data-theme="dark"] .risk-card,
+html[data-theme="dark"] .feature-card,
+html[data-theme="dark"] .voice-page,
+html[data-theme="dark"] .user-risk-page,
+
+html.dark body,
+html.dark .landing-page,
+html.dark .navbar,
+html.dark .hero,
+html.dark .risk-card,
+html.dark .feature-card,
+html.dark .voice-page,
+html.dark .user-risk-page {
+
+  transition:
+    background-color 0.3s ease,
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+/* =========================================================
+   31. IMPORTANT SAFETY OVERRIDES
+   Keep existing danger/success colors visible
+========================================================= */
+
+html[data-theme="dark"] .danger,
+html.dark .danger,
+body.dark .danger {
+
+  color:
+    #ef4444 !important;
+}
+
+
+html[data-theme="dark"] .success,
+html.dark .success,
+body.dark .success {
+
+  color:
+    #34d399 !important;
+}
+
+
+html[data-theme="dark"] .warning,
+html.dark .warning,
+body.dark .warning {
+
+  color:
+    #fbbf24 !important;
+}
+
+
+/* =========================================================
+   END OF FRAUDSHIELD GLOBAL THEME
+========================================================= */
+
+
+/* =========================================================
+   32. GLOBAL PAGE COVERAGE
+   ---------------------------------------------------------
+   These rules are intentionally generic so pages that use
+   different class names still follow the centralized theme.
+   They do NOT change layout, spacing, sizing, or functionality.
+   ========================================================= */
+
+/* Main page surfaces */
+html[data-theme="dark"] main,
+html.dark main,
+body.dark main,
+html[data-theme="dark"] section,
+html.dark section,
+body.dark section,
+html[data-theme="dark"] article,
+html.dark article,
+body.dark article,
+html[data-theme="dark"] aside,
+html.dark aside,
+body.dark aside {
+  color: #f8fafc;
+}
+
+/* Common application/page wrappers */
+html[data-theme="dark"] [class*="page"],
+html[data-theme="dark"] [class*="Page"],
+html.dark [class*="page"],
+html.dark [class*="Page"],
+body.dark [class*="page"],
+body.dark [class*="Page"] {
+  color: #f8fafc;
+}
+
+/* Common card/panel/container naming patterns.
+   Specific card rules above remain more visually distinct. */
+html[data-theme="dark"] [class*="card"],
+html[data-theme="dark"] [class*="Card"],
+html[data-theme="dark"] [class*="panel"],
+html[data-theme="dark"] [class*="Panel"],
+html[data-theme="dark"] [class*="container"],
+html[data-theme="dark"] [class*="Container"],
+html.dark [class*="card"],
+html.dark [class*="Card"],
+html.dark [class*="panel"],
+html.dark [class*="Panel"],
+html.dark [class*="container"],
+html.dark [class*="Container"],
+body.dark [class*="card"],
+body.dark [class*="Card"],
+body.dark [class*="panel"],
+body.dark [class*="Panel"],
+body.dark [class*="container"],
+body.dark [class*="Container"] {
+  border-color: rgba(148, 163, 184, 0.16) !important;
+}
+
+/* Generic content surfaces */
+html[data-theme="dark"] [class*="content"],
+html[data-theme="dark"] [class*="Content"],
+html[data-theme="dark"] [class*="section"],
+html[data-theme="dark"] [class*="Section"],
+html.dark [class*="content"],
+html.dark [class*="Content"],
+html.dark [class*="section"],
+html.dark [class*="Section"],
+body.dark [class*="content"],
+body.dark [class*="Content"],
+body.dark [class*="section"],
+body.dark [class*="Section"] {
+  border-color: rgba(148, 163, 184, 0.14) !important;
+}
+
+/* Common application headers/navbars */
+html[data-theme="dark"] [class*="header"],
+html[data-theme="dark"] [class*="Header"],
+html[data-theme="dark"] [class*="navbar"],
+html[data-theme="dark"] [class*="Navbar"],
+html[data-theme="dark"] [class*="nav-bar"],
+html.dark [class*="header"],
+html.dark [class*="Header"],
+html.dark [class*="navbar"],
+html.dark [class*="Navbar"],
+html.dark [class*="nav-bar"],
+body.dark [class*="header"],
+body.dark [class*="Header"],
+body.dark [class*="navbar"],
+body.dark [class*="Navbar"],
+body.dark [class*="nav-bar"] {
+  border-color: rgba(148, 163, 184, 0.15) !important;
+}
+
+/* =========================================================
+   33. GENERIC DARK SURFACE OVERRIDES
+   ---------------------------------------------------------
+   Covers pages whose original CSS uses white/light surfaces
+   without the FraudShield-specific class names above.
+   ========================================================= */
+
+html[data-theme="dark"] [style*="background: white"],
+html[data-theme="dark"] [style*="background:white"],
+html[data-theme="dark"] [style*="background: #fff"],
+html[data-theme="dark"] [style*="background:#fff"],
+html[data-theme="dark"] [style*="background-color: white"],
+html[data-theme="dark"] [style*="background-color:white"],
+html[data-theme="dark"] [style*="background-color: #fff"],
+html[data-theme="dark"] [style*="background-color:#fff"],
+html.dark [style*="background: white"],
+html.dark [style*="background:white"],
+html.dark [style*="background: #fff"],
+html.dark [style*="background:#fff"],
+html.dark [style*="background-color: white"],
+html.dark [style*="background-color:white"],
+html.dark [style*="background-color: #fff"],
+html.dark [style*="background-color:#fff"],
+body.dark [style*="background: white"],
+body.dark [style*="background:white"],
+body.dark [style*="background: #fff"],
+body.dark [style*="background:#fff"],
+body.dark [style*="background-color: white"],
+body.dark [style*="background-color:white"],
+body.dark [style*="background-color: #fff"],
+body.dark [style*="background-color:#fff"] {
+  background: #0d1a2a !important;
+}
+
+/* =========================================================
+   34. GENERIC DARK TEXT OVERRIDES
+   ========================================================= */
+
+html[data-theme="dark"] [class*="title"],
+html[data-theme="dark"] [class*="Title"],
+html[data-theme="dark"] [class*="heading"],
+html[data-theme="dark"] [class*="Heading"],
+html.dark [class*="title"],
+html.dark [class*="Title"],
+html.dark [class*="heading"],
+html.dark [class*="Heading"],
+body.dark [class*="title"],
+body.dark [class*="Title"],
+body.dark [class*="heading"],
+body.dark [class*="Heading"] {
+  color: #f8fafc !important;
+}
+
+html[data-theme="dark"] [class*="subtitle"],
+html[data-theme="dark"] [class*="Subtitle"],
+html[data-theme="dark"] [class*="description"],
+html[data-theme="dark"] [class*="Description"],
+html[data-theme="dark"] [class*="muted"],
+html[data-theme="dark"] [class*="Muted"],
+html.dark [class*="subtitle"],
+html.dark [class*="Subtitle"],
+html.dark [class*="description"],
+html.dark [class*="Description"],
+html.dark [class*="muted"],
+html.dark [class*="Muted"],
+body.dark [class*="subtitle"],
+body.dark [class*="Subtitle"],
+body.dark [class*="description"],
+body.dark [class*="Description"],
+body.dark [class*="muted"],
+body.dark [class*="Muted"] {
+  color: #a7b5c7 !important;
+}
+
+/* =========================================================
+   35. GENERIC DARK FORM COVERAGE
+   ========================================================= */
+
+html[data-theme="dark"] form,
+html.dark form,
+body.dark form {
+  color: #f8fafc;
+}
+
+html[data-theme="dark"] button:not(.primary-btn):not(.protect-btn),
+html.dark button:not(.primary-btn):not(.protect-btn),
+body.dark button:not(.primary-btn):not(.protect-btn) {
+  color: #e2e8f0;
+}
+
+html[data-theme="dark"] button:disabled,
+html.dark button:disabled,
+body.dark button:disabled {
+  color: #64748b !important;
+  opacity: 0.65;
+}
+
+/* Checkbox/radio controls stay usable in dark mode */
+html[data-theme="dark"] input[type="checkbox"],
+html[data-theme="dark"] input[type="radio"],
+html.dark input[type="checkbox"],
+html.dark input[type="radio"],
+body.dark input[type="checkbox"],
+body.dark input[type="radio"] {
+  accent-color: #3b82f6;
+}
+
+/* =========================================================
+   36. LOGIN AUTOFILL / BROWSER HIGHLIGHT
+   ---------------------------------------------------------
+   Chrome can paint saved Gmail/password values white/blue.
+   Keep the field itself dark in the selected theme.
+   ========================================================= */
+
+html[data-theme="dark"] input:-internal-autofill-selected,
+html.dark input:-internal-autofill-selected,
+body.dark input:-internal-autofill-selected {
+  background-color: #081522 !important;
+  color: #f8fafc !important;
+}
+
+html[data-theme="dark"] .login-page input,
+html[data-theme="dark"] .register-page input,
+html[data-theme="dark"] .auth-page input,
+html.dark .login-page input,
+html.dark .register-page input,
+html.dark .auth-page input,
+body.dark .login-page input,
+body.dark .register-page input,
+body.dark .auth-page input {
+  color-scheme: dark;
+}
+
+/* =========================================================
+   37. COMMON WHITE / LIGHT SURFACE CLASS COVERAGE
+   ========================================================= */
+
+html[data-theme="dark"] .bg-light,
+html[data-theme="dark"] .light-bg,
+html[data-theme="dark"] .surface,
+html[data-theme="dark"] .surface-light,
+html[data-theme="dark"] .white-card,
+html[data-theme="dark"] .light-card,
+html.dark .bg-light,
+html.dark .light-bg,
+html.dark .surface,
+html.dark .surface-light,
+html.dark .white-card,
+html.dark .light-card,
+body.dark .bg-light,
+body.dark .light-bg,
+body.dark .surface,
+body.dark .surface-light,
+body.dark .white-card,
+body.dark .light-card {
+  background: #0d1a2a !important;
+  color: #f8fafc !important;
+  border-color: rgba(148, 163, 184, 0.16) !important;
+}
+
+/* =========================================================
+   38. USER RISK PAGE - STRONG GLOBAL COVERAGE
+   ---------------------------------------------------------
+   The screenshot shows this page uses several independent
+   white cards. These selectors cover common names without
+   requiring every card to be renamed.
+   ========================================================= */
+
+html[data-theme="dark"] [data-page="user-risk"] [class*="card"],
+html[data-theme="dark"] [data-page="user-risk"] [class*="Card"],
+html[data-theme="dark"] [data-page="user-risk"] [class*="panel"],
+html[data-theme="dark"] [data-page="user-risk"] [class*="Panel"],
+html.dark [data-page="user-risk"] [class*="card"],
+html.dark [data-page="user-risk"] [class*="Card"],
+html.dark [data-page="user-risk"] [class*="panel"],
+html.dark [data-page="user-risk"] [class*="Panel"],
+body.dark [data-page="user-risk"] [class*="card"],
+body.dark [data-page="user-risk"] [class*="Card"],
+body.dark [data-page="user-risk"] [class*="panel"],
+body.dark [data-page="user-risk"] [class*="Panel"] {
+  background: #0d1a2a !important;
+  color: #f8fafc !important;
+  border-color: rgba(148, 163, 184, 0.16) !important;
+}
+
+/* User risk top profile banner remains intentionally darker */
+html[data-theme="dark"] [data-page="user-risk"] [class*="profile"],
+html[data-theme="dark"] [data-page="user-risk"] [class*="Profile"],
+html.dark [data-page="user-risk"] [class*="profile"],
+html.dark [data-page="user-risk"] [class*="Profile"],
+body.dark [data-page="user-risk"] [class*="profile"],
+body.dark [data-page="user-risk"] [class*="Profile"] {
+  border-color: rgba(148, 163, 184, 0.18) !important;
+}
+
+/* =========================================================
+   39. VOICE PHISHING - STRONG GLOBAL COVERAGE
+   ========================================================= */
+
+html[data-theme="dark"] [data-page="voice-phishing"] [class*="card"],
+html[data-theme="dark"] [data-page="voice-phishing"] [class*="Card"],
+html[data-theme="dark"] [data-page="voice-phishing"] [class*="panel"],
+html[data-theme="dark"] [data-page="voice-phishing"] [class*="Panel"],
+html.dark [data-page="voice-phishing"] [class*="card"],
+html.dark [data-page="voice-phishing"] [class*="Card"],
+html.dark [data-page="voice-phishing"] [class*="panel"],
+html.dark [data-page="voice-phishing"] [class*="Panel"],
+body.dark [data-page="voice-phishing"] [class*="card"],
+body.dark [data-page="voice-phishing"] [class*="Card"],
+body.dark [data-page="voice-phishing"] [class*="panel"],
+body.dark [data-page="voice-phishing"] [class*="Panel"] {
+  background: #0d1a2a !important;
+  color: #f8fafc !important;
+  border-color: rgba(148, 163, 184, 0.16) !important;
+}
+
+/* =========================================================
+   40. SVG / ICON VISIBILITY
+   ========================================================= */
+
+html[data-theme="dark"] svg,
+html.dark svg,
+body.dark svg {
+  /* Do not force fill; many Lucide icons use stroke. */
+  stroke: currentColor;
+}
+
+/* Preserve filled SVG icons/logos */
+html[data-theme="dark"] svg[fill],
+html.dark svg[fill],
+body.dark svg[fill] {
+  stroke: currentColor;
+}
+
+/* =========================================================
+   41. FOCUS ACCESSIBILITY
+   ========================================================= */
+
+html[data-theme="dark"] :focus-visible,
+html.dark :focus-visible,
+body.dark :focus-visible {
+  outline: 2px solid #60a5fa !important;
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   42. FINAL ROOT OVERRIDE
+   ---------------------------------------------------------
+   Keep the entire application surface dark even when a page
+   has no dedicated page class.
+   ========================================================= */
+
+html[data-theme="dark"],
+html[data-theme="dark"] body,
+html[data-theme="dark"] #root,
+html.dark,
+html.dark body,
+html.dark #root,
+body.dark,
+body.dark #root {
+  background-color: #07111f !important;
+}
+
+/* =========================================================
+   END OF UPDATED GLOBAL THEME
+   ========================================================= */
+/* =========================================================
+   43. CENTRALIZED THEME V2 — ALL FRONTEND PAGES
+   ---------------------------------------------------------
+   This section is the final cascade layer for the one-click
+   theme switch. It covers every page root currently used by
+   FraudShield and overrides hard-coded page colors without
+   changing layout, spacing, sizing, or functionality.
+   ========================================================= */
+
+:root {
+  --fs-light-page: #f5f7fb;
+  --fs-light-surface: #ffffff;
+  --fs-light-surface-2: #f8fafc;
+  --fs-light-text: #0f172a;
+  --fs-light-muted: #64748b;
+  --fs-light-border: #dbe3ee;
+  --fs-light-input: #ffffff;
+
+  --fs-dark-page: #07111f;
+  --fs-dark-surface: #0d1a2a;
+  --fs-dark-surface-2: #101f32;
+  --fs-dark-text: #f8fafc;
+  --fs-dark-muted: #9fb0c2;
+  --fs-dark-border: rgba(148, 163, 184, 0.18);
+  --fs-dark-input: #081522;
+}
+
+/* The exact page roots in the current FraudShield frontend. */
+html[data-theme="light"] .landing-page,
+html[data-theme="light"] .auth-page,
+html[data-theme="light"] .register-page,
+html[data-theme="light"] .fs2-page,
+html[data-theme="light"] .tx-page,
+html[data-theme="light"] .fs-alert-page,
+html[data-theme="light"] .voice-analyzer-page,
+html[data-theme="light"] .fs-voice-page,
+html[data-theme="light"] .fa-page,
+html[data-theme="light"] .dashboard-page,
+html[data-theme="light"] .network-page,
+html[data-theme="light"] .geo-page,
+html[data-theme="light"] .urp-page,
+html[data-theme="light"] .device-intelligence-page,
+html[data-theme="light"] .admin-page,
+html.dark .landing-page,
+html.dark .auth-page,
+html.dark .register-page,
+html.dark .fs2-page,
+html.dark .tx-page,
+html.dark .fs-alert-page,
+html.dark .voice-analyzer-page,
+html.dark .fs-voice-page,
+html.dark .fa-page,
+html.dark .dashboard-page,
+html.dark .network-page,
+html.dark .geo-page,
+html.dark .urp-page,
+html.dark .device-intelligence-page,
+html.dark .admin-page {
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* ---------------------------------------------------------
+   LIGHT MODE — page backgrounds
+   --------------------------------------------------------- */
+
+html[data-theme="light"] .landing-page,
+html[data-theme="light"] .auth-page,
+html[data-theme="light"] .register-page,
+html[data-theme="light"] .fs2-page,
+html[data-theme="light"] .tx-page,
+html[data-theme="light"] .fs-alert-page,
+html[data-theme="light"] .voice-analyzer-page,
+html[data-theme="light"] .fs-voice-page,
+html[data-theme="light"] .fa-page,
+html[data-theme="light"] .dashboard-page,
+html[data-theme="light"] .network-page,
+html[data-theme="light"] .geo-page,
+html[data-theme="light"] .urp-page,
+html[data-theme="light"] .device-intelligence-page,
+html[data-theme="light"] .admin-page {
+  background-color: var(--fs-light-page) !important;
+  color: var(--fs-light-text) !important;
+}
+
+/* Remove dark-only page backgrounds/gradients in LIGHT mode. */
+html[data-theme="light"] .network-page,
+html[data-theme="light"] .register-page,
+html[data-theme="light"] .auth-page,
+html[data-theme="light"] .fs-voice-page,
+html[data-theme="light"] .fs2-page,
+html[data-theme="light"] .tx-page,
+html[data-theme="light"] .fs-alert-page,
+html[data-theme="light"] .geo-page,
+html[data-theme="light"] .urp-page,
+html[data-theme="light"] .device-intelligence-page,
+html[data-theme="light"] .admin-page,
+html[data-theme="light"] .fa-page,
+html[data-theme="light"] .voice-analyzer-page {
+  background-image: none !important;
+}
+
+/* ---------------------------------------------------------
+   DARK MODE — page backgrounds
+   --------------------------------------------------------- */
+
+html[data-theme="dark"] .landing-page,
+html[data-theme="dark"] .auth-page,
+html[data-theme="dark"] .register-page,
+html[data-theme="dark"] .fs2-page,
+html[data-theme="dark"] .tx-page,
+html[data-theme="dark"] .fs-alert-page,
+html[data-theme="dark"] .voice-analyzer-page,
+html[data-theme="dark"] .fs-voice-page,
+html[data-theme="dark"] .fa-page,
+html[data-theme="dark"] .dashboard-page,
+html[data-theme="dark"] .network-page,
+html[data-theme="dark"] .geo-page,
+html[data-theme="dark"] .urp-page,
+html[data-theme="dark"] .device-intelligence-page,
+html[data-theme="dark"] .admin-page,
+html.dark .landing-page,
+html.dark .auth-page,
+html.dark .register-page,
+html.dark .fs2-page,
+html.dark .tx-page,
+html.dark .fs-alert-page,
+html.dark .voice-analyzer-page,
+html.dark .fs-voice-page,
+html.dark .fa-page,
+html.dark .dashboard-page,
+html.dark .network-page,
+html.dark .geo-page,
+html.dark .urp-page,
+html.dark .device-intelligence-page,
+html.dark .admin-page {
+  background-color: var(--fs-dark-page) !important;
+  color: var(--fs-dark-text) !important;
+}
+
+/* ---------------------------------------------------------
+   Shared navigation / headers
+   --------------------------------------------------------- */
+
+html[data-theme="light"] .navbar,
+html[data-theme="light"] .dashboard-navbar,
+html[data-theme="light"] .fs2-navbar,
+html[data-theme="light"] .tx-nav,
+html[data-theme="light"] .fs-alert-topbar,
+html[data-theme="light"] .di-navbar,
+html[data-theme="light"] .geo-navbar,
+html[data-theme="light"] .urp-nav,
+html[data-theme="light"] .dashboard-page .dashboard-navbar,
+html[data-theme="light"] .dashboard-page > nav,
+html[data-theme="light"] .admin-page .admin-header,
+html[data-theme="light"] .network-header,
+html[data-theme="light"] .fs-voice-header {
+  background: var(--fs-light-surface) !important;
+  color: var(--fs-light-text) !important;
+  border-color: var(--fs-light-border) !important;
+}
+
+html[data-theme="dark"] .navbar,
+html[data-theme="dark"] .dashboard-navbar,
+html[data-theme="dark"] .fs2-navbar,
+html[data-theme="dark"] .tx-nav,
+html[data-theme="dark"] .fs-alert-topbar,
+html[data-theme="dark"] .di-navbar,
+html[data-theme="dark"] .geo-navbar,
+html[data-theme="dark"] .urp-nav,
+html[data-theme="dark"] .dashboard-page .dashboard-navbar,
+html[data-theme="dark"] .dashboard-page > nav,
+html[data-theme="dark"] .admin-page .admin-header,
+html[data-theme="dark"] .network-header,
+html[data-theme="dark"] .fs-voice-header,
+html.dark .navbar,
+html.dark .dashboard-navbar,
+html.dark .fs2-navbar,
+html.dark .tx-nav,
+html.dark .fs-alert-topbar,
+html.dark .di-navbar,
+html.dark .geo-navbar,
+html.dark .urp-nav,
+html.dark .dashboard-page .dashboard-navbar,
+html.dark .dashboard-page > nav,
+html.dark .admin-page .admin-header,
+html.dark .network-header,
+html.dark .fs-voice-header {
+  background: var(--fs-dark-surface) !important;
+  color: var(--fs-dark-text) !important;
+  border-color: var(--fs-dark-border) !important;
+}
+
+/* ---------------------------------------------------------
+   Shared cards / panels / surfaces
+   --------------------------------------------------------- */
+
+html[data-theme="light"] .landing-page .risk-card,
+html[data-theme="light"] .landing-page .feature-card,
+html[data-theme="light"] .auth-card,
+html[data-theme="light"] .register-card,
+html[data-theme="light"] [class*="card"],
+html[data-theme="light"] [class*="Card"],
+html[data-theme="light"] [class*="panel"],
+html[data-theme="light"] [class*="Panel"],
+html[data-theme="light"] [class*="section-card"],
+html[data-theme="light"] [class*="content-card"],
+html[data-theme="light"] [class*="stat-card"] {
+  background-color: var(--fs-light-surface) !important;
+  color: var(--fs-light-text) !important;
+  border-color: var(--fs-light-border) !important;
+}
+
+html[data-theme="dark"] [class*="card"],
+html[data-theme="dark"] [class*="Card"],
+html[data-theme="dark"] [class*="panel"],
+html[data-theme="dark"] [class*="Panel"],
+html[data-theme="dark"] [class*="section-card"],
+html[data-theme="dark"] [class*="content-card"],
+html[data-theme="dark"] [class*="stat-card"],
+html.dark [class*="card"],
+html.dark [class*="Card"],
+html.dark [class*="panel"],
+html.dark [class*="Panel"],
+html.dark [class*="section-card"],
+html.dark [class*="content-card"],
+html.dark [class*="stat-card"] {
+  background-color: var(--fs-dark-surface) !important;
+  color: var(--fs-dark-text) !important;
+  border-color: var(--fs-dark-border) !important;
+}
+
+/* ---------------------------------------------------------
+   Page-specific surface classes used by the current pages
+   --------------------------------------------------------- */
+
+html[data-theme="light"] .fs2-page [class*="fs2-"],
+html[data-theme="light"] .tx-page [class*="tx-"],
+html[data-theme="light"] .fs-alert-page [class*="fs-alert-"],
+html[data-theme="light"] .fa-page [class*="fa-"],
+html[data-theme="light"] .geo-page [class*="geo-"],
+html[data-theme="light"] .urp-page [class*="urp-"],
+html[data-theme="light"] .device-intelligence-page [class*="di-"],
+html[data-theme="light"] .admin-page [class*="admin-"] {
+  border-color: var(--fs-light-border) !important;
+}
+
+html[data-theme="dark"] .fs2-page [class*="fs2-"],
+html[data-theme="dark"] .tx-page [class*="tx-"],
+html[data-theme="dark"] .fs-alert-page [class*="fs-alert-"],
+html[data-theme="dark"] .fa-page [class*="fa-"],
+html[data-theme="dark"] .geo-page [class*="geo-"],
+html[data-theme="dark"] .urp-page [class*="urp-"],
+html[data-theme="dark"] .device-intelligence-page [class*="di-"],
+html[data-theme="dark"] .admin-page [class*="admin-"] {
+  border-color: var(--fs-dark-border) !important;
+}
+
+/* ---------------------------------------------------------
+   Text hierarchy — light
+   --------------------------------------------------------- */
+
+html[data-theme="light"] .fs2-page h1,
+html[data-theme="light"] .fs2-page h2,
+html[data-theme="light"] .fs2-page h3,
+html[data-theme="light"] .fs2-page h4,
+html[data-theme="light"] .tx-page h1,
+html[data-theme="light"] .tx-page h2,
+html[data-theme="light"] .tx-page h3,
+html[data-theme="light"] .fs-alert-page h1,
+html[data-theme="light"] .fs-alert-page h2,
+html[data-theme="light"] .fs-alert-page h3,
+html[data-theme="light"] .fa-page h1,
+html[data-theme="light"] .fa-page h2,
+html[data-theme="light"] .fa-page h3,
+html[data-theme="light"] .geo-page h1,
+html[data-theme="light"] .geo-page h2,
+html[data-theme="light"] .geo-page h3,
+html[data-theme="light"] .urp-page h1,
+html[data-theme="light"] .urp-page h2,
+html[data-theme="light"] .urp-page h3,
+html[data-theme="light"] .device-intelligence-page h1,
+html[data-theme="light"] .device-intelligence-page h2,
+html[data-theme="light"] .device-intelligence-page h3,
+html[data-theme="light"] .admin-page h1,
+html[data-theme="light"] .admin-page h2,
+html[data-theme="light"] .admin-page h3,
+html[data-theme="light"] .fs-voice-page h1,
+html[data-theme="light"] .fs-voice-page h2,
+html[data-theme="light"] .fs-voice-page h3,
+html[data-theme="light"] .voice-analyzer-page h1,
+html[data-theme="light"] .voice-analyzer-page h2,
+html[data-theme="light"] .voice-analyzer-page h3 {
+  color: var(--fs-light-text) !important;
+}
+
+html[data-theme="light"] .fs2-page p,
+html[data-theme="light"] .tx-page p,
+html[data-theme="light"] .fs-alert-page p,
+html[data-theme="light"] .fa-page p,
+html[data-theme="light"] .geo-page p,
+html[data-theme="light"] .urp-page p,
+html[data-theme="light"] .device-intelligence-page p,
+html[data-theme="light"] .admin-page p,
+html[data-theme="light"] .fs-voice-page p,
+html[data-theme="light"] .voice-analyzer-page p {
+  color: var(--fs-light-muted) !important;
+}
+
+/* ---------------------------------------------------------
+   Text hierarchy — dark
+   --------------------------------------------------------- */
+
+html[data-theme="dark"] .fs2-page h1,
+html[data-theme="dark"] .fs2-page h2,
+html[data-theme="dark"] .fs2-page h3,
+html[data-theme="dark"] .fs2-page h4,
+html[data-theme="dark"] .tx-page h1,
+html[data-theme="dark"] .tx-page h2,
+html[data-theme="dark"] .tx-page h3,
+html[data-theme="dark"] .fs-alert-page h1,
+html[data-theme="dark"] .fs-alert-page h2,
+html[data-theme="dark"] .fs-alert-page h3,
+html[data-theme="dark"] .fa-page h1,
+html[data-theme="dark"] .fa-page h2,
+html[data-theme="dark"] .fa-page h3,
+html[data-theme="dark"] .geo-page h1,
+html[data-theme="dark"] .geo-page h2,
+html[data-theme="dark"] .geo-page h3,
+html[data-theme="dark"] .urp-page h1,
+html[data-theme="dark"] .urp-page h2,
+html[data-theme="dark"] .urp-page h3,
+html[data-theme="dark"] .device-intelligence-page h1,
+html[data-theme="dark"] .device-intelligence-page h2,
+html[data-theme="dark"] .device-intelligence-page h3,
+html[data-theme="dark"] .admin-page h1,
+html[data-theme="dark"] .admin-page h2,
+html[data-theme="dark"] .admin-page h3,
+html[data-theme="dark"] .fs-voice-page h1,
+html[data-theme="dark"] .fs-voice-page h2,
+html[data-theme="dark"] .fs-voice-page h3,
+html[data-theme="dark"] .voice-analyzer-page h1,
+html[data-theme="dark"] .voice-analyzer-page h2,
+html[data-theme="dark"] .voice-analyzer-page h3,
+html.dark .fs2-page h1,
+html.dark .fs2-page h2,
+html.dark .fs2-page h3,
+html.dark .tx-page h1,
+html.dark .tx-page h2,
+html.dark .tx-page h3,
+html.dark .fs-alert-page h1,
+html.dark .fs-alert-page h2,
+html.dark .fs-alert-page h3,
+html.dark .fa-page h1,
+html.dark .fa-page h2,
+html.dark .fa-page h3,
+html.dark .geo-page h1,
+html.dark .geo-page h2,
+html.dark .geo-page h3,
+html.dark .urp-page h1,
+html.dark .urp-page h2,
+html.dark .urp-page h3,
+html.dark .device-intelligence-page h1,
+html.dark .device-intelligence-page h2,
+html.dark .device-intelligence-page h3,
+html.dark .admin-page h1,
+html.dark .admin-page h2,
+html.dark .admin-page h3,
+html.dark .fs-voice-page h1,
+html.dark .fs-voice-page h2,
+html.dark .fs-voice-page h3,
+html.dark .voice-analyzer-page h1,
+html.dark .voice-analyzer-page h2,
+html.dark .voice-analyzer-page h3 {
+  color: var(--fs-dark-text) !important;
+}
+
+html[data-theme="dark"] .fs2-page p,
+html[data-theme="dark"] .tx-page p,
+html[data-theme="dark"] .fs-alert-page p,
+html[data-theme="dark"] .fa-page p,
+html[data-theme="dark"] .geo-page p,
+html[data-theme="dark"] .urp-page p,
+html[data-theme="dark"] .device-intelligence-page p,
+html[data-theme="dark"] .admin-page p,
+html[data-theme="dark"] .fs-voice-page p,
+html[data-theme="dark"] .voice-analyzer-page p,
+html.dark .fs2-page p,
+html.dark .tx-page p,
+html.dark .fs-alert-page p,
+html.dark .fa-page p,
+html.dark .geo-page p,
+html.dark .urp-page p,
+html.dark .device-intelligence-page p,
+html.dark .admin-page p,
+html.dark .fs-voice-page p,
+html.dark .voice-analyzer-page p {
+  color: var(--fs-dark-muted) !important;
+}
+
+/* ---------------------------------------------------------
+   Forms — both modes
+   --------------------------------------------------------- */
+
+html[data-theme="light"] .auth-page input,
+html[data-theme="light"] .auth-page textarea,
+html[data-theme="light"] .auth-page select,
+html[data-theme="light"] .register-page input,
+html[data-theme="light"] .register-page textarea,
+html[data-theme="light"] .register-page select,
+html[data-theme="light"] .fs2-page input,
+html[data-theme="light"] .fs2-page textarea,
+html[data-theme="light"] .fs2-page select,
+html[data-theme="light"] .tx-page input,
+html[data-theme="light"] .tx-page textarea,
+html[data-theme="light"] .tx-page select,
+html[data-theme="light"] .fs-voice-page input,
+html[data-theme="light"] .fs-voice-page textarea,
+html[data-theme="light"] .fs-voice-page select,
+html[data-theme="light"] .voice-analyzer-page input,
+html[data-theme="light"] .voice-analyzer-page textarea,
+html[data-theme="light"] .voice-analyzer-page select {
+  background: var(--fs-light-input) !important;
+  color: var(--fs-light-text) !important;
+  border-color: var(--fs-light-border) !important;
+}
+
+html[data-theme="dark"] .auth-page input,
+html[data-theme="dark"] .auth-page textarea,
+html[data-theme="dark"] .auth-page select,
+html[data-theme="dark"] .register-page input,
+html[data-theme="dark"] .register-page textarea,
+html[data-theme="dark"] .register-page select,
+html[data-theme="dark"] .fs2-page input,
+html[data-theme="dark"] .fs2-page textarea,
+html[data-theme="dark"] .fs2-page select,
+html[data-theme="dark"] .tx-page input,
+html[data-theme="dark"] .tx-page textarea,
+html[data-theme="dark"] .tx-page select,
+html[data-theme="dark"] .fs-voice-page input,
+html[data-theme="dark"] .fs-voice-page textarea,
+html[data-theme="dark"] .fs-voice-page select,
+html[data-theme="dark"] .voice-analyzer-page input,
+html[data-theme="dark"] .voice-analyzer-page textarea,
+html[data-theme="dark"] .voice-analyzer-page select {
+  background: var(--fs-dark-input) !important;
+  color: var(--fs-dark-text) !important;
+  border-color: var(--fs-dark-border) !important;
+  color-scheme: dark;
+}
+
+/* Chrome autofill must follow selected theme. */
+html[data-theme="dark"] input:-webkit-autofill,
+html[data-theme="dark"] input:-webkit-autofill:hover,
+html[data-theme="dark"] input:-webkit-autofill:focus,
+html.dark input:-webkit-autofill,
+html.dark input:-webkit-autofill:hover,
+html.dark input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #f8fafc !important;
+  -webkit-box-shadow: 0 0 0 1000px #081522 inset !important;
+  box-shadow: 0 0 0 1000px #081522 inset !important;
+  background-color: #081522 !important;
+}
+
+html[data-theme="light"] input:-webkit-autofill,
+html[data-theme="light"] input:-webkit-autofill:hover,
+html[data-theme="light"] input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #0f172a !important;
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
+  box-shadow: 0 0 0 1000px #ffffff inset !important;
+  background-color: #ffffff !important;
+}
+
+/* ---------------------------------------------------------
+   Tables and data regions
+   --------------------------------------------------------- */
+
+html[data-theme="light"] .fs2-page table,
+html[data-theme="light"] .tx-page table,
+html[data-theme="light"] .fs-alert-page table,
+html[data-theme="light"] .fa-page table,
+html[data-theme="light"] .geo-page table,
+html[data-theme="light"] .urp-page table,
+html[data-theme="light"] .device-intelligence-page table,
+html[data-theme="light"] .admin-page table {
+  color: var(--fs-light-text) !important;
+  border-color: var(--fs-light-border) !important;
+}
+
+html[data-theme="dark"] .fs2-page table,
+html[data-theme="dark"] .tx-page table,
+html[data-theme="dark"] .fs-alert-page table,
+html[data-theme="dark"] .fa-page table,
+html[data-theme="dark"] .geo-page table,
+html[data-theme="dark"] .urp-page table,
+html[data-theme="dark"] .device-intelligence-page table,
+html[data-theme="dark"] .admin-page table {
+  color: var(--fs-dark-text) !important;
+  border-color: var(--fs-dark-border) !important;
+}
+
+html[data-theme="light"] th,
+html[data-theme="light"] td {
+  border-color: var(--fs-light-border) !important;
+}
+
+html[data-theme="dark"] th,
+html[data-theme="dark"] td,
+html.dark th,
+html.dark td {
+  border-color: var(--fs-dark-border) !important;
+}
+
+/* ---------------------------------------------------------
+   Neutral buttons / controls
+   --------------------------------------------------------- */
+
+html[data-theme="light"] .fs2-page button:not(.primary):not(.danger),
+html[data-theme="light"] .tx-page button:not(.primary):not(.danger),
+html[data-theme="light"] .fs-alert-page button:not(.primary):not(.danger),
+html[data-theme="light"] .fa-page button:not(.primary):not(.danger),
+html[data-theme="light"] .geo-page button:not(.primary):not(.danger),
+html[data-theme="light"] .urp-page button:not(.primary):not(.danger),
+html[data-theme="light"] .device-intelligence-page button:not(.primary):not(.danger),
+html[data-theme="light"] .admin-page button:not(.primary):not(.danger),
+html[data-theme="light"] .fs-voice-page button:not(.primary):not(.danger) {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: var(--fs-light-border) !important;
+}
+
+html[data-theme="dark"] .fs2-page button:not(.primary):not(.danger),
+html[data-theme="dark"] .tx-page button:not(.primary):not(.danger),
+html[data-theme="dark"] .fs-alert-page button:not(.primary):not(.danger),
+html[data-theme="dark"] .fa-page button:not(.primary):not(.danger),
+html[data-theme="dark"] .geo-page button:not(.primary):not(.danger),
+html[data-theme="dark"] .urp-page button:not(.primary):not(.danger),
+html[data-theme="dark"] .device-intelligence-page button:not(.primary):not(.danger),
+html[data-theme="dark"] .admin-page button:not(.primary):not(.danger),
+html[data-theme="dark"] .fs-voice-page button:not(.primary):not(.danger),
+html.dark .fs2-page button:not(.primary):not(.danger),
+html.dark .tx-page button:not(.primary):not(.danger),
+html.dark .fs-alert-page button:not(.primary):not(.danger),
+html.dark .fa-page button:not(.primary):not(.danger),
+html.dark .geo-page button:not(.primary):not(.danger),
+html.dark .urp-page button:not(.primary):not(.danger),
+html.dark .device-intelligence-page button:not(.primary):not(.danger),
+html.dark .admin-page button:not(.primary):not(.danger),
+html.dark .fs-voice-page button:not(.primary):not(.danger) {
+  background-color: #0d1a2a !important;
+  color: #e2e8f0 !important;
+  border-color: var(--fs-dark-border) !important;
+}
+
+/* ---------------------------------------------------------
+   Dark-mode visibility fixes for icons and labels
+   --------------------------------------------------------- */
+
+html[data-theme="dark"] .fs2-page label,
+html[data-theme="dark"] .tx-page label,
+html[data-theme="dark"] .fs-alert-page label,
+html[data-theme="dark"] .fa-page label,
+html[data-theme="dark"] .geo-page label,
+html[data-theme="dark"] .urp-page label,
+html[data-theme="dark"] .device-intelligence-page label,
+html[data-theme="dark"] .admin-page label,
+html[data-theme="dark"] .fs-voice-page label,
+html.dark .fs2-page label,
+html.dark .tx-page label,
+html.dark .fs-alert-page label,
+html.dark .fa-page label,
+html.dark .geo-page label,
+html.dark .urp-page label,
+html.dark .device-intelligence-page label,
+html.dark .admin-page label,
+html.dark .fs-voice-page label {
+  color: #cbd5e1 !important;
+}
+
+/* ---------------------------------------------------------
+   Auth pages — explicit light/dark cards
+   --------------------------------------------------------- */
+
+html[data-theme="light"] .auth-card,
+html[data-theme="light"] .register-card {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #dbe3ee !important;
+  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.08) !important;
+}
+
+html[data-theme="dark"] .auth-card,
+html[data-theme="dark"] .register-card,
+html.dark .auth-card,
+html.dark .register-card {
+  background: #0d1a2a !important;
+  color: #f8fafc !important;
+  border-color: rgba(148, 163, 184, 0.20) !important;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.35) !important;
+}
+
+/* ---------------------------------------------------------
+   Landing stays visually close to the original design
+   --------------------------------------------------------- */
+
+html[data-theme="light"] .landing-page .navbar {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border-bottom-color: #e2e8f0 !important;
+}
+
+html[data-theme="dark"] .landing-page .navbar,
+html.dark .landing-page .navbar {
+  background: #081422 !important;
+  color: #f8fafc !important;
+  border-bottom-color: rgba(148, 163, 184, 0.16) !important;
+}
+
+html[data-theme="dark"] .landing-page .hero,
+html.dark .landing-page .hero,
+html[data-theme="dark"] .landing-page .features-section,
+html.dark .landing-page .features-section,
+html[data-theme="dark"] .landing-page .how-section,
+html.dark .landing-page .how-section {
+  color: #f8fafc !important;
+}
+
+/* ---------------------------------------------------------
+   Global theme transition
+   --------------------------------------------------------- */
+
+html,
+body,
+#root,
+#root > * {
+  transition:
+    background-color 0.22s ease,
+    color 0.22s ease,
+    border-color 0.22s ease;
+}
+
+/* =========================================================
+   END CENTRALIZED THEME V2
+   ========================================================= */
+
+
+/* =========================================================
+   44. LIGHT MODE — FINAL VISIBILITY FIX
+   ---------------------------------------------------------
+   Some page-specific CSS files contain hard-coded white/light
+   text from their original dark design. The rules below are
+   intentionally LAST in the cascade so selecting LIGHT never
+   leaves important labels/details invisible on white cards.
+
+   Layout and functionality are untouched.
+   ========================================================= */
+
+/* Explicit light color scheme for browser controls */
+html[data-theme="light"],
+html.light,
+html[data-theme="light"] body,
+html.light body {
+  color-scheme: light;
+  background-color: #f5f7fb !important;
+  color: #0f172a !important;
+}
+
+/* All real FraudShield page roots */
+html[data-theme="light"] .landing-page,
+html[data-theme="light"] .auth-page,
+html[data-theme="light"] .register-page,
+html[data-theme="light"] .fs2-page,
+html[data-theme="light"] .tx-page,
+html[data-theme="light"] .fs-alert-page,
+html[data-theme="light"] .voice-analyzer-page,
+html[data-theme="light"] .fs-voice-page,
+html[data-theme="light"] .fa-page,
+html[data-theme="light"] .dashboard-page,
+html[data-theme="light"] .network-page,
+html[data-theme="light"] .geo-page,
+html[data-theme="light"] .urp-page,
+html[data-theme="light"] .device-intelligence-page,
+html[data-theme="light"] .admin-page,
+html.light .landing-page,
+html.light .auth-page,
+html.light .register-page,
+html.light .fs2-page,
+html.light .tx-page,
+html.light .fs-alert-page,
+html.light .voice-analyzer-page,
+html.light .fs-voice-page,
+html.light .fa-page,
+html.light .dashboard-page,
+html.light .network-page,
+html.light .geo-page,
+html.light .urp-page,
+html.light .device-intelligence-page,
+html.light .admin-page {
+  color: #0f172a !important;
+}
+
+/* Primary readable text.
+   Excludes obvious semantic status classes so HIGH/LOW,
+   success/error badges, etc. keep their intended colors. */
+html[data-theme="light"] .fs2-page h1:not([class*="danger"]):not([class*="success"]),
+html[data-theme="light"] .fs2-page h2:not([class*="danger"]):not([class*="success"]),
+html[data-theme="light"] .fs2-page h3:not([class*="danger"]):not([class*="success"]),
+html[data-theme="light"] .fs2-page h4:not([class*="danger"]):not([class*="success"]),
+html[data-theme="light"] .fs2-page h5:not([class*="danger"]):not([class*="success"]),
+html[data-theme="light"] .fs2-page h6:not([class*="danger"]):not([class*="success"]),
+html[data-theme="light"] .tx-page h1:not([class*="danger"]):not([class*="success"]),
+html[data-theme="light"] .tx-page h2:not([class*="danger"]):not([class*="success"]),
+html[data-theme="light"] .tx-page h3:not([class*="danger"]):not([class*="success"]),
+html[data-theme="light"] .tx-page h4:not([class*="danger"]):not([class*="success"]),
+html[data-theme="light"] .fs-alert-page h1:not([class*="danger"]):not([class*="success"]),
+html[data-theme="light"] .fs-alert-page h2:not([class*="danger"]):not([class*="success"]),
+html[data-theme="light"] .fs-alert-page h3:not([class*="danger"]):not([class*="success"]),
+html[data-theme="light"] .fa-page h1:not([class*="danger"]):not([class*="success"]),
+html[data-theme="light"] .fa-page h2:not([class*="danger"]):not([class*="success"]),
+html[data-theme="light"] .fa-page h3:not([class*="danger"]):not([class*="success"]),
+html[data-theme="light"] .geo-page h1:not([class*="danger"]):not([class*="success"]),
+html[data-theme="light"] .geo-page h2:not([class*="danger"]):not([class*="success"]),
+html[data-theme="light"] .geo-page h3:not([class*="danger"]):not([class*="success"]),
+html[data-theme="light"] .urp-page h1:not([class*="danger"]):not([class*="success"]),
+html[data-theme="light"] .urp-page h2:not([class*="danger"]):not([class*="success"]),
+html[data-theme="light"] .urp-page h3:not([class*="danger"]):not([class*="success"]),
+html[data-theme="light"] .device-intelligence-page h1:not([class*="danger"]):not([class*="success"]),
+html[data-theme="light"] .device-intelligence-page h2:not([class*="danger"]):not([class*="success"]),
+html[data-theme="light"] .device-intelligence-page h3:not([class*="danger"]):not([class*="success"]),
+html[data-theme="light"] .admin-page h1:not([class*="danger"]):not([class*="success"]),
+html[data-theme="light"] .admin-page h2:not([class*="danger"]):not([class*="success"]),
+html[data-theme="light"] .admin-page h3:not([class*="danger"]):not([class*="success"]),
+html[data-theme="light"] .fs-voice-page h1:not([class*="danger"]):not([class*="success"]),
+html[data-theme="light"] .fs-voice-page h2:not([class*="danger"]):not([class*="success"]),
+html[data-theme="light"] .fs-voice-page h3:not([class*="danger"]):not([class*="success"]),
+html[data-theme="light"] .voice-analyzer-page h1:not([class*="danger"]):not([class*="success"]),
+html[data-theme="light"] .voice-analyzer-page h2:not([class*="danger"]):not([class*="success"]),
+html[data-theme="light"] .voice-analyzer-page h3:not([class*="danger"]):not([class*="success"]),
+html.light .fs2-page h1:not([class*="danger"]):not([class*="success"]),
+html.light .fs2-page h2:not([class*="danger"]):not([class*="success"]),
+html.light .fs2-page h3:not([class*="danger"]):not([class*="success"]),
+html.light .tx-page h1:not([class*="danger"]):not([class*="success"]),
+html.light .tx-page h2:not([class*="danger"]):not([class*="success"]),
+html.light .tx-page h3:not([class*="danger"]):not([class*="success"]),
+html.light .fs-alert-page h1:not([class*="danger"]):not([class*="success"]),
+html.light .fs-alert-page h2:not([class*="danger"]):not([class*="success"]),
+html.light .fs-alert-page h3:not([class*="danger"]):not([class*="success"]),
+html.light .fa-page h1:not([class*="danger"]):not([class*="success"]),
+html.light .fa-page h2:not([class*="danger"]):not([class*="success"]),
+html.light .fa-page h3:not([class*="danger"]):not([class*="success"]),
+html.light .geo-page h1:not([class*="danger"]):not([class*="success"]),
+html.light .geo-page h2:not([class*="danger"]):not([class*="success"]),
+html.light .geo-page h3:not([class*="danger"]):not([class*="success"]),
+html.light .urp-page h1:not([class*="danger"]):not([class*="success"]),
+html.light .urp-page h2:not([class*="danger"]):not([class*="success"]),
+html.light .urp-page h3:not([class*="danger"]):not([class*="success"]),
+html.light .device-intelligence-page h1:not([class*="danger"]):not([class*="success"]),
+html.light .device-intelligence-page h2:not([class*="danger"]):not([class*="success"]),
+html.light .device-intelligence-page h3:not([class*="danger"]):not([class*="success"]),
+html.light .admin-page h1:not([class*="danger"]):not([class*="success"]),
+html.light .admin-page h2:not([class*="danger"]):not([class*="success"]),
+html.light .admin-page h3:not([class*="danger"]):not([class*="success"]),
+html.light .fs-voice-page h1:not([class*="danger"]):not([class*="success"]),
+html.light .fs-voice-page h2:not([class*="danger"]):not([class*="success"]),
+html.light .fs-voice-page h3:not([class*="danger"]):not([class*="success"]),
+html.light .voice-analyzer-page h1:not([class*="danger"]):not([class*="success"]),
+html.light .voice-analyzer-page h2:not([class*="danger"]):not([class*="success"]),
+html.light .voice-analyzer-page h3:not([class*="danger"]):not([class*="success"]) {
+  color: #0f172a !important;
+}
+
+/* Body/detail text. */
+html[data-theme="light"] .fs2-page p,
+html[data-theme="light"] .tx-page p,
+html[data-theme="light"] .fs-alert-page p,
+html[data-theme="light"] .fa-page p,
+html[data-theme="light"] .geo-page p,
+html[data-theme="light"] .urp-page p,
+html[data-theme="light"] .device-intelligence-page p,
+html[data-theme="light"] .admin-page p,
+html[data-theme="light"] .fs-voice-page p,
+html[data-theme="light"] .voice-analyzer-page p,
+html.light .fs2-page p,
+html.light .tx-page p,
+html.light .fs-alert-page p,
+html.light .fa-page p,
+html.light .geo-page p,
+html.light .urp-page p,
+html.light .device-intelligence-page p,
+html.light .admin-page p,
+html.light .fs-voice-page p,
+html.light .voice-analyzer-page p {
+  color: #475569 !important;
+}
+
+/* Common text-bearing elements used by the pages. */
+html[data-theme="light"] .fs2-page span:not(.danger):not(.success):not(.warning),
+html[data-theme="light"] .fs2-page label,
+html[data-theme="light"] .fs2-page li,
+html[data-theme="light"] .fs2-page small,
+html[data-theme="light"] .fs2-page strong,
+html[data-theme="light"] .tx-page span:not(.danger):not(.success):not(.warning),
+html[data-theme="light"] .tx-page label,
+html[data-theme="light"] .tx-page li,
+html[data-theme="light"] .tx-page small,
+html[data-theme="light"] .tx-page strong,
+html[data-theme="light"] .fs-alert-page span:not(.danger):not(.success):not(.warning),
+html[data-theme="light"] .fs-alert-page label,
+html[data-theme="light"] .fs-alert-page li,
+html[data-theme="light"] .fs-alert-page small,
+html[data-theme="light"] .fs-alert-page strong,
+html[data-theme="light"] .fa-page span:not(.danger):not(.success):not(.warning),
+html[data-theme="light"] .fa-page label,
+html[data-theme="light"] .fa-page li,
+html[data-theme="light"] .fa-page small,
+html[data-theme="light"] .fa-page strong,
+html[data-theme="light"] .geo-page span:not(.danger):not(.success):not(.warning),
+html[data-theme="light"] .geo-page label,
+html[data-theme="light"] .geo-page li,
+html[data-theme="light"] .geo-page small,
+html[data-theme="light"] .geo-page strong,
+html[data-theme="light"] .urp-page span:not(.danger):not(.success):not(.warning),
+html[data-theme="light"] .urp-page label,
+html[data-theme="light"] .urp-page li,
+html[data-theme="light"] .urp-page small,
+html[data-theme="light"] .urp-page strong,
+html[data-theme="light"] .device-intelligence-page span:not(.danger):not(.success):not(.warning),
+html[data-theme="light"] .device-intelligence-page label,
+html[data-theme="light"] .device-intelligence-page li,
+html[data-theme="light"] .device-intelligence-page small,
+html[data-theme="light"] .device-intelligence-page strong,
+html[data-theme="light"] .admin-page span:not(.danger):not(.success):not(.warning),
+html[data-theme="light"] .admin-page label,
+html[data-theme="light"] .admin-page li,
+html[data-theme="light"] .admin-page small,
+html[data-theme="light"] .admin-page strong,
+html[data-theme="light"] .fs-voice-page span:not(.danger):not(.success):not(.warning),
+html[data-theme="light"] .fs-voice-page label,
+html[data-theme="light"] .fs-voice-page li,
+html[data-theme="light"] .fs-voice-page small,
+html[data-theme="light"] .fs-voice-page strong,
+html[data-theme="light"] .voice-analyzer-page span:not(.danger):not(.success):not(.warning),
+html[data-theme="light"] .voice-analyzer-page label,
+html[data-theme="light"] .voice-analyzer-page li,
+html[data-theme="light"] .voice-analyzer-page small,
+html[data-theme="light"] .voice-analyzer-page strong {
+  color: #334155 !important;
+}
+
+/* Keep semantic status text visible in light mode. */
+html[data-theme="light"] .danger,
+html[data-theme="light"] .error,
+html[data-theme="light"] [class*="danger"],
+html[data-theme="light"] [class*="Danger"],
+html[data-theme="light"] [class*="error"],
+html[data-theme="light"] [class*="Error"] {
+  color: #dc2626 !important;
+}
+
+html[data-theme="light"] .success,
+html[data-theme="light"] [class*="success"],
+html[data-theme="light"] [class*="Success"] {
+  color: #16a34a !important;
+}
+
+html[data-theme="light"] .warning,
+html[data-theme="light"] [class*="warning"],
+html[data-theme="light"] [class*="Warning"] {
+  color: #b45309 !important;
+}
+
+/* Tables/data values. */
+html[data-theme="light"] table,
+html[data-theme="light"] th,
+html[data-theme="light"] td,
+html.light table,
+html.light th,
+html.light td {
+  color: #0f172a !important;
+  border-color: #dbe3ee !important;
+}
+
+html[data-theme="light"] th,
+html.light th {
+  background: #f8fafc !important;
+}
+
+/* Dark-first buttons/controls must not leave white text on white. */
+html[data-theme="light"] .fs2-page button,
+html[data-theme="light"] .tx-page button,
+html[data-theme="light"] .fs-alert-page button,
+html[data-theme="light"] .fa-page button,
+html[data-theme="light"] .geo-page button,
+html[data-theme="light"] .urp-page button,
+html[data-theme="light"] .device-intelligence-page button,
+html[data-theme="light"] .admin-page button,
+html[data-theme="light"] .fs-voice-page button,
+html.light .fs2-page button,
+html.light .tx-page button,
+html.light .fs-alert-page button,
+html.light .fa-page button,
+html.light .geo-page button,
+html.light .urp-page button,
+html.light .device-intelligence-page button,
+html.light .admin-page button,
+html.light .fs-voice-page button {
+  color: #0f172a;
+}
+
+/* Preserve primary/danger button contrast. */
+html[data-theme="light"] .primary,
+html[data-theme="light"] .primary-btn,
+html[data-theme="light"] .primary-button,
+html[data-theme="light"] .protect-btn,
+html[data-theme="light"] .danger,
+html[data-theme="light"] .danger-btn,
+html[data-theme="light"] .danger-button,
+html.light .primary,
+html.light .primary-btn,
+html.light .primary-button,
+html.light .protect-btn,
+html.light .danger,
+html.light .danger-btn,
+html.light .danger-button {
+  color: #ffffff !important;
+}
+
+/* Light inputs and textareas: never inherit dark-mode text. */
+html[data-theme="light"] input,
+html[data-theme="light"] textarea,
+html[data-theme="light"] select,
+html.light input,
+html.light textarea,
+html.light select {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+  color-scheme: light;
+}
+
+html[data-theme="light"] input::placeholder,
+html[data-theme="light"] textarea::placeholder,
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: #64748b !important;
+}
+
+/* Light autofill. */
+html[data-theme="light"] input:-webkit-autofill,
+html[data-theme="light"] input:-webkit-autofill:hover,
+html[data-theme="light"] input:-webkit-autofill:focus,
+html.light input:-webkit-autofill,
+html.light input:-webkit-autofill:hover,
+html.light input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #0f172a !important;
+  -webkit-box-shadow: 0 0 0 1000px #ffffff inset !important;
+  box-shadow: 0 0 0 1000px #ffffff inset !important;
+  background-color: #ffffff !important;
+}
+
+/* Light-mode generic surfaces. */
+html[data-theme="light"] .bg-dark,
+html[data-theme="light"] .dark-bg,
+html[data-theme="light"] .dark-card,
+html[data-theme="light"] .dark-surface,
+html.light .bg-dark,
+html.light .dark-bg,
+html.light .dark-card,
+html.light .dark-surface {
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #dbe3ee !important;
+}
+
+/* Inline dark/white text left by page-specific styling.
+   Only applies in LIGHT mode and only to common textual roles. */
+html[data-theme="light"] [class*="title"],
+html[data-theme="light"] [class*="Title"],
+html[data-theme="light"] [class*="heading"],
+html[data-theme="light"] [class*="Heading"],
+html[data-theme="light"] [class*="value"],
+html[data-theme="light"] [class*="Value"],
+html[data-theme="light"] [class*="name"],
+html[data-theme="light"] [class*="Name"],
+html[data-theme="light"] [class*="detail"],
+html[data-theme="light"] [class*="Detail"],
+html[data-theme="light"] [class*="meta"],
+html[data-theme="light"] [class*="Meta"],
+html.light [class*="title"],
+html.light [class*="Title"],
+html.light [class*="heading"],
+html.light [class*="Heading"],
+html.light [class*="value"],
+html.light [class*="Value"],
+html.light [class*="name"],
+html.light [class*="Name"],
+html.light [class*="detail"],
+html.light [class*="Detail"],
+html.light [class*="meta"],
+html.light [class*="Meta"] {
+  color: #0f172a !important;
+}
+
+/* Muted/detail descriptions stay readable but softer. */
+html[data-theme="light"] [class*="subtitle"],
+html[data-theme="light"] [class*="Subtitle"],
+html[data-theme="light"] [class*="description"],
+html[data-theme="light"] [class*="Description"],
+html[data-theme="light"] [class*="muted"],
+html[data-theme="light"] [class*="Muted"],
+html.light [class*="subtitle"],
+html.light [class*="Subtitle"],
+html.light [class*="description"],
+html.light [class*="Description"],
+html.light [class*="muted"],
+html.light [class*="Muted"] {
+  color: #64748b !important;
+}
+
+/* =========================================================
+   END LIGHT MODE VISIBILITY FIX
+   ========================================================= */
+
+/* =========================================================
+   FINAL LIGHT-MODE FIX — DASHBOARD SECURITY MODULES
+   ---------------------------------------------------------
+   The Dashboard module cards use .fs2-module rather than a
+   class containing "card". Their original CSS has a dark
+   gradient and light text, so generic card overrides cannot
+   reach them. These rules intentionally override only colors.
+   ========================================================= */
+
+html[data-theme="light"] .fs2-module,
+html.light .fs2-module {
+  background: #ffffff !important;
+  background-image: none !important;
+  color: #0f172a !important;
+  border-color: #dbe3ee !important;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06) !important;
+}
+
+html[data-theme="light"] .fs2-module::after,
+html.light .fs2-module::after {
+  background: rgba(37, 99, 235, 0.035) !important;
+}
+
+html[data-theme="light"] .fs2-module-icon,
+html.light .fs2-module-icon {
+  background: #eff6ff !important;
+  color: #2563eb !important;
+  border-color: #dbeafe !important;
+}
+
+html[data-theme="light"] .fs2-module-content,
+html.light .fs2-module-content {
+  color: #0f172a !important;
+}
+
+html[data-theme="light"] .fs2-module-content > span,
+html.light .fs2-module-content > span {
+  color: #64748b !important;
+}
+
+html[data-theme="light"] .fs2-module-content h3,
+html.light .fs2-module-content h3 {
+  color: #0f172a !important;
+}
+
+html[data-theme="light"] .fs2-module-content p,
+html.light .fs2-module-content p {
+  color: #64748b !important;
+}
+
+html[data-theme="light"] .fs2-module-content button,
+html.light .fs2-module-content button {
+  background: #ffffff !important;
+  background-image: none !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+html[data-theme="light"] .fs2-module-content button:hover,
+html.light .fs2-module-content button:hover {
+  background: #eff6ff !important;
+  color: #1d4ed8 !important;
+  border-color: #93c5fd !important;
+}
+
+/* Dashboard status/decision/quick panels are also dark-first. */
+html[data-theme="light"] .fs2-status-panel,
+html[data-theme="light"] .fs2-quick,
+html[data-theme="light"] .fs2-status-item,
+html[data-theme="light"] .fs2-decision,
+html.light .fs2-status-panel,
+html.light .fs2-quick,
+html.light .fs2-status-item,
+html.light .fs2-decision {
+  background: #ffffff !important;
+  background-image: none !important;
+  color: #0f172a !important;
+  border-color: #dbe3ee !important;
+}
+
+html[data-theme="light"] .fs2-status-item span,
+html.light .fs2-status-item span,
+html[data-theme="light"] .fs2-decision span,
+html.light .fs2-decision span,
+html[data-theme="light"] .fs2-feedback,
+html.light .fs2-feedback,
+html[data-theme="light"] .fs2-no-data,
+html.light .fs2-no-data {
+  color: #64748b !important;
+}
+
+html[data-theme="light"] .fs2-status-item strong,
+html.light .fs2-status-item strong,
+html[data-theme="light"] .fs2-decision strong,
+html.light .fs2-decision strong,
+html[data-theme="light"] .fs2-feedback b,
+html.light .fs2-feedback b {
+  color: #0f172a !important;
+}
+
+html[data-theme="light"] .fs2-decision-icon.danger,
+html.light .fs2-decision-icon.danger {
+  color: #dc2626 !important;
+}
+
+html[data-theme="light"] .fs2-decision-icon.warning,
+html.light .fs2-decision-icon.warning {
+  color: #d97706 !important;
+}
+
+html[data-theme="light"] .fs2-decision-icon.success,
+html.light .fs2-decision-icon.success {
+  color: #16a34a !important;
+}
+
+html[data-theme="light"] .fs2-feedback,
+html.light .fs2-feedback {
+  border-top-color: #e2e8f0 !important;
+}
+
+html[data-theme="light"] .fs2-signal,
+html.light .fs2-signal {
+  border-bottom-color: #e2e8f0 !important;
+}
+
+html[data-theme="light"] .fs2-signal-text strong,
+html.light .fs2-signal-text strong {
+  color: #0f172a !important;
+}
+
+html[data-theme="light"] .fs2-signal-text span,
+html.light .fs2-signal-text span {
+  color: #64748b !important;
+}
+
+html[data-theme="light"] .fs2-signal-count,
+html.light .fs2-signal-count {
+  background: #f1f5f9 !important;
+  color: #334155 !important;
+}
+
+html[data-theme="light"] .fs2-risk-total,
+html.light .fs2-risk-total {
+  color: #64748b !important;
+  border-top-color: #e2e8f0 !important;
+}
+
+html[data-theme="light"] .fs2-risk-total strong,
+html.light .fs2-risk-total strong {
+  color: #0f172a !important;
+}
+
+/* Keep the dark theme exactly as designed. */
+html[data-theme="dark"] .fs2-module,
+html.dark .fs2-module {
+  color: #f8fafc;
+}
+
+/* =========================================================
+   END DASHBOARD LIGHT-MODE FIX
+   ========================================================= */

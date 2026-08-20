@@ -136,7 +136,7 @@ function UserRiskProfile() {
   const nav = path => navigate(path);
 
   return (
-    <div className="urp-page">
+    <div className="urp-page" data-page="user-risk">
       <header className="urp-nav">
         <button className="urp-brand" onClick={() => nav("/dashboard")}>
           <span className="urp-brand-icon"><Shield size={21} /></span>
@@ -437,6 +437,602 @@ function UserRiskProfile() {
         .urp-primary,.urp-secondary{border-radius:8px;padding:9px 13px;font-size:11px;font-weight:800;display:inline-flex;align-items:center;gap:7px;cursor:pointer}.urp-primary{border:0;background:#2563eb;color:#fff}.urp-secondary{border:1px solid #dbe3ed;background:#fff;color:#475569}.urp-card>.urp-primary{margin-top:17px}
         .urp-modal-backdrop{position:fixed;inset:0;background:rgba(15,23,42,.58);display:grid;place-items:center;padding:20px;z-index:200}.urp-modal{width:min(560px,100%);background:#fff;border-radius:16px;padding:24px;position:relative;box-shadow:0 25px 70px rgba(0,0,0,.25)}.urp-close{position:absolute;right:15px;top:15px;border:0;background:#f1f5f9;color:#64748b;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;cursor:pointer}.urp-modal h2{margin:7px 0 4px;font-size:20px}.urp-modal>p{margin:0;color:#64748b;font-size:11px}.urp-detail-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-top:18px}.urp-detail{padding:13px;background:#f8fafc;border-radius:9px}.urp-detail span{display:block;color:#94a3b8;font-size:9px;font-weight:800}.urp-detail b{display:block;margin-top:5px;font-size:13px;color:#0f172a}.urp-modal-reasons{margin-top:14px;padding:13px;background:#eff6ff;border-radius:9px;color:#1e3a8a;font-size:11px}.urp-modal-reasons p{margin:6px 0 0;white-space:pre-wrap;line-height:1.5}.urp-modal-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:17px}
         .urp-empty{padding:35px;text-align:center;color:#94a3b8}.urp-empty svg{margin:auto}.urp-empty h3{margin:10px 0 4px;color:#334155;font-size:14px}.urp-empty p{margin:0;font-size:11px}
+
+        /* =====================================================
+           FRAUDSHIELD GLOBAL DARK MODE
+           Works with the theme toggle by supporting:
+           html[data-theme="dark"], html.dark, body.dark
+        ===================================================== */
+
+        html[data-theme="dark"] .urp-page,
+        html.dark .urp-page,
+        body.dark .urp-page {
+          background: #07111f;
+          color: #e5edf7;
+        }
+
+        html[data-theme="dark"] .urp-nav,
+        html.dark .urp-nav,
+        body.dark .urp-nav {
+          background: #0b1726;
+          border-bottom-color: rgba(148,163,184,.16);
+        }
+
+        html[data-theme="dark"] .urp-brand,
+        html.dark .urp-brand,
+        body.dark .urp-brand {
+          color: #f8fafc;
+        }
+
+        html[data-theme="dark"] .urp-brand small,
+        html.dark .urp-brand small,
+        body.dark .urp-brand small {
+          color: #7f93a8;
+        }
+
+        html[data-theme="dark"] .urp-brand-icon,
+        html.dark .urp-brand-icon,
+        body.dark .urp-brand-icon {
+          background: #17263a;
+          color: #f8fafc;
+          border: 1px solid rgba(148,163,184,.18);
+        }
+
+        html[data-theme="dark"] .urp-nav-links button,
+        html.dark .urp-nav-links button,
+        body.dark .urp-nav-links button {
+          color: #8fa2b6;
+        }
+
+        html[data-theme="dark"] .urp-nav-links button:hover,
+        html[data-theme="dark"] .urp-nav-links button.active,
+        html.dark .urp-nav-links button:hover,
+        html.dark .urp-nav-links button.active,
+        body.dark .urp-nav-links button:hover,
+        body.dark .urp-nav-links button.active {
+          background: rgba(59,130,246,.12);
+          color: #60a5fa;
+        }
+
+        html[data-theme="dark"] .urp-logout,
+        html.dark .urp-logout,
+        body.dark .urp-logout {
+          background: #101f32;
+          border-color: rgba(148,163,184,.20);
+          color: #cbd5e1;
+        }
+
+        html[data-theme="dark"] .urp-logout:hover,
+        html.dark .urp-logout:hover,
+        body.dark .urp-logout:hover {
+          background: #14263b;
+          border-color: rgba(96,165,250,.35);
+          color: #93c5fd;
+        }
+
+        html[data-theme="dark"] .urp-back,
+        html.dark .urp-back,
+        body.dark .urp-back {
+          background: #0d1a2a;
+          border-color: rgba(148,163,184,.20);
+          color: #cbd5e1;
+        }
+
+        html[data-theme="dark"] .urp-back:hover,
+        html.dark .urp-back:hover,
+        body.dark .urp-back:hover {
+          background: #14263b;
+          border-color: rgba(96,165,250,.35);
+          color: #93c5fd;
+        }
+
+        html[data-theme="dark"] .urp-refresh,
+        html.dark .urp-refresh,
+        body.dark .urp-refresh {
+          background: #17263a;
+          border-color: #17263a;
+          color: #f8fafc;
+        }
+
+        html[data-theme="dark"] .urp-heading h1,
+        html.dark .urp-heading h1,
+        body.dark .urp-heading h1 {
+          color: #f8fafc;
+        }
+
+        html[data-theme="dark"] .urp-heading p,
+        html.dark .urp-heading p,
+        body.dark .urp-heading p {
+          color: #91a4b9;
+        }
+
+        html[data-theme="dark"] .urp-kicker,
+        html[data-theme="dark"] .urp-mini-label,
+        html.dark .urp-kicker,
+        html.dark .urp-mini-label,
+        body.dark .urp-kicker,
+        body.dark .urp-mini-label {
+          color: #60a5fa;
+        }
+
+        html[data-theme="dark"] .urp-live,
+        html.dark .urp-live,
+        body.dark .urp-live {
+          background: rgba(16,185,129,.10);
+          color: #6ee7b7;
+          border-color: rgba(52,211,153,.25);
+        }
+
+        html[data-theme="dark"] .urp-live.high,
+        html.dark .urp-live.high,
+        body.dark .urp-live.high {
+          background: rgba(239,68,68,.10);
+          color: #fca5a5;
+          border-color: rgba(248,113,113,.25);
+        }
+
+        html[data-theme="dark"] .urp-live.medium,
+        html.dark .urp-live.medium,
+        body.dark .urp-live.medium {
+          background: rgba(245,158,11,.10);
+          color: #fcd34d;
+          border-color: rgba(251,191,36,.25);
+        }
+
+        html[data-theme="dark"] .urp-error,
+        html.dark .urp-error,
+        body.dark .urp-error {
+          background: rgba(239,68,68,.10);
+          border-color: rgba(248,113,113,.25);
+          color: #fca5a5;
+        }
+
+        html[data-theme="dark"] .urp-error button,
+        html.dark .urp-error button,
+        body.dark .urp-error button {
+          background: #dc2626;
+          color: #fff;
+        }
+
+        html[data-theme="dark"] .urp-loading h2,
+        html.dark .urp-loading h2,
+        body.dark .urp-loading h2 {
+          color: #e2e8f0;
+        }
+
+        html[data-theme="dark"] .urp-loading p,
+        html.dark .urp-loading p,
+        body.dark .urp-loading p {
+          color: #7f93a8;
+        }
+
+        /* Main profile card remains dark, but gets a richer dark-mode surface. */
+        html[data-theme="dark"] .urp-profile-card,
+        html.dark .urp-profile-card,
+        body.dark .urp-profile-card {
+          background: #0d182a;
+          box-shadow: 0 18px 45px rgba(0,0,0,.32);
+          border: 1px solid rgba(96,165,250,.10);
+        }
+
+        html[data-theme="dark"] .urp-avatar,
+        html.dark .urp-avatar,
+        body.dark .urp-avatar {
+          background: #16263a;
+          border-color: rgba(148,163,184,.22);
+        }
+
+        html[data-theme="dark"] .urp-identity p,
+        html.dark .urp-identity p,
+        body.dark .urp-identity p {
+          color: #91a4b9;
+        }
+
+        html[data-theme="dark"] .urp-risk-score>div:last-child span,
+        html[data-theme="dark"] .urp-risk-score>div:last-child small,
+        html.dark .urp-risk-score>div:last-child span,
+        html.dark .urp-risk-score>div:last-child small,
+        body.dark .urp-risk-score>div:last-child span,
+        body.dark .urp-risk-score>div:last-child small {
+          color: #8195aa;
+        }
+
+        html[data-theme="dark"] .urp-score-ring:after,
+        html.dark .urp-score-ring:after,
+        body.dark .urp-score-ring:after {
+          background: #0d182a;
+        }
+
+        html[data-theme="dark"] .urp-stat,
+        html.dark .urp-stat,
+        body.dark .urp-stat,
+        html[data-theme="dark"] .urp-entity,
+        html.dark .urp-entity,
+        body.dark .urp-entity,
+        html[data-theme="dark"] .urp-card,
+        html.dark .urp-card,
+        body.dark .urp-card {
+          background: #0d1a2a;
+          border-color: rgba(148,163,184,.16);
+          box-shadow: 0 14px 35px rgba(0,0,0,.18);
+        }
+
+        html[data-theme="dark"] .urp-stat-icon,
+        html.dark .urp-stat-icon,
+        body.dark .urp-stat-icon {
+          background: rgba(59,130,246,.11);
+          color: #60a5fa;
+        }
+
+        html[data-theme="dark"] .urp-stat.danger .urp-stat-icon,
+        html.dark .urp-stat.danger .urp-stat-icon,
+        body.dark .urp-stat.danger .urp-stat-icon {
+          background: rgba(239,68,68,.11);
+          color: #f87171;
+        }
+
+        html[data-theme="dark"] .urp-stat span,
+        html.dark .urp-stat span,
+        body.dark .urp-stat span {
+          color: #8195aa;
+        }
+
+        html[data-theme="dark"] .urp-stat strong,
+        html.dark .urp-stat strong,
+        body.dark .urp-stat strong {
+          color: #f1f5f9;
+        }
+
+        html[data-theme="dark"] .urp-entity-head h3,
+        html.dark .urp-entity-head h3,
+        body.dark .urp-entity-head h3 {
+          color: #e2e8f0;
+        }
+
+        html[data-theme="dark"] .urp-entity-count,
+        html.dark .urp-entity-count,
+        body.dark .urp-entity-count {
+          color: #f8fafc;
+        }
+
+        html[data-theme="dark"] .urp-entity-head svg,
+        html.dark .urp-entity-head svg,
+        body.dark .urp-entity-head svg {
+          color: #60a5fa;
+        }
+
+        html[data-theme="dark"] .urp-tag,
+        html.dark .urp-tag,
+        body.dark .urp-tag {
+          background: #0a1625;
+          border-color: rgba(148,163,184,.16);
+          color: #a7b5c7;
+        }
+
+        html[data-theme="dark"] .urp-empty-inline,
+        html.dark .urp-empty-inline,
+        body.dark .urp-empty-inline {
+          color: #71859a;
+        }
+
+        html[data-theme="dark"] .urp-card-head h2,
+        html.dark .urp-card-head h2,
+        body.dark .urp-card-head h2 {
+          color: #f1f5f9;
+        }
+
+        html[data-theme="dark"] .urp-card-head p,
+        html.dark .urp-card-head p,
+        body.dark .urp-card-head p {
+          color: #8195aa;
+        }
+
+        html[data-theme="dark"] .urp-card-head>svg,
+        html.dark .urp-card-head>svg,
+        body.dark .urp-card-head>svg {
+          color: #60a5fa;
+        }
+
+        html[data-theme="dark"] .urp-meter,
+        html.dark .urp-meter,
+        body.dark .urp-meter {
+          background: #223247;
+        }
+
+        html[data-theme="dark"] .urp-risk-scale,
+        html.dark .urp-risk-scale,
+        body.dark .urp-risk-scale {
+          color: #71859a;
+        }
+
+        html[data-theme="dark"] .urp-reasons,
+        html.dark .urp-reasons,
+        body.dark .urp-reasons {
+          border-top-color: rgba(148,163,184,.13);
+        }
+
+        html[data-theme="dark"] .urp-reasons h3,
+        html.dark .urp-reasons h3,
+        body.dark .urp-reasons h3 {
+          color: #cbd5e1;
+        }
+
+        html[data-theme="dark"] .urp-reason-grid div,
+        html.dark .urp-reason-grid div,
+        body.dark .urp-reason-grid div {
+          background: rgba(154,52,18,.11);
+          border-color: rgba(251,146,60,.28);
+          color: #fdba74;
+        }
+
+        html[data-theme="dark"] .urp-reason-grid span,
+        html.dark .urp-reason-grid span,
+        body.dark .urp-reason-grid span {
+          background: rgba(251,146,60,.16);
+          color: #fed7aa;
+        }
+
+        html[data-theme="dark"] .urp-search,
+        html.dark .urp-search,
+        body.dark .urp-search {
+          background: #081522;
+          border-color: rgba(148,163,184,.20);
+          color: #71859a;
+        }
+
+        html[data-theme="dark"] .urp-search input,
+        html.dark .urp-search input,
+        body.dark .urp-search input {
+          background: transparent;
+          color: #e2e8f0;
+        }
+
+        html[data-theme="dark"] .urp-search input::placeholder,
+        html.dark .urp-search input::placeholder,
+        body.dark .urp-search input::placeholder {
+          color: #60758a;
+        }
+
+        html[data-theme="dark"] .urp-filters button,
+        html.dark .urp-filters button,
+        body.dark .urp-filters button {
+          background: #0a1625;
+          border-color: rgba(148,163,184,.18);
+          color: #91a4b9;
+        }
+
+        html[data-theme="dark"] .urp-filters button:hover,
+        html.dark .urp-filters button:hover,
+        body.dark .urp-filters button:hover {
+          background: #122238;
+          color: #93c5fd;
+        }
+
+        html[data-theme="dark"] .urp-filters button.selected,
+        html.dark .urp-filters button.selected,
+        body.dark .urp-filters button.selected {
+          background: rgba(59,130,246,.12);
+          border-color: rgba(96,165,250,.30);
+          color: #60a5fa;
+        }
+
+        html[data-theme="dark"] .urp-table,
+        html.dark .urp-table,
+        body.dark .urp-table {
+          border-color: rgba(148,163,184,.16);
+        }
+
+        html[data-theme="dark"] .urp-table-head,
+        html.dark .urp-table-head,
+        body.dark .urp-table-head {
+          background: #0a1625;
+          color: #71859a;
+        }
+
+        html[data-theme="dark"] .urp-row,
+        html.dark .urp-row,
+        body.dark .urp-row {
+          background: #0d1a2a;
+          border-top-color: rgba(148,163,184,.12);
+          color: #a7b5c7;
+        }
+
+        html[data-theme="dark"] .urp-row:hover,
+        html.dark .urp-row:hover,
+        body.dark .urp-row:hover {
+          background: #112238;
+        }
+
+        html[data-theme="dark"] .urp-row .mono,
+        html.dark .urp-row .mono,
+        body.dark .urp-row .mono {
+          color: #a9bad0;
+        }
+
+        html[data-theme="dark"] .urp-row strong,
+        html.dark .urp-row strong,
+        body.dark .urp-row strong {
+          color: #f1f5f9;
+        }
+
+        html[data-theme="dark"] .urp-row>svg,
+        html.dark .urp-row>svg,
+        body.dark .urp-row>svg {
+          color: #71859a;
+        }
+
+        html[data-theme="dark"] .urp-alert-row,
+        html.dark .urp-alert-row,
+        body.dark .urp-alert-row {
+          border-top-color: rgba(148,163,184,.12);
+        }
+
+        html[data-theme="dark"] .alert-icon.high,
+        html.dark .alert-icon.high,
+        body.dark .alert-icon.high {
+          background: rgba(239,68,68,.11);
+          color: #f87171;
+        }
+
+        html[data-theme="dark"] .alert-icon.medium,
+        html.dark .alert-icon.medium,
+        body.dark .alert-icon.medium {
+          background: rgba(245,158,11,.11);
+          color: #fbbf24;
+        }
+
+        html[data-theme="dark"] .alert-icon.low,
+        html.dark .alert-icon.low,
+        body.dark .alert-icon.low {
+          background: rgba(16,185,129,.11);
+          color: #34d399;
+        }
+
+        html[data-theme="dark"] .urp-alert-row strong,
+        html.dark .urp-alert-row strong,
+        body.dark .urp-alert-row strong {
+          color: #dbe5ef;
+        }
+
+        html[data-theme="dark"] .urp-alert-row small,
+        html.dark .urp-alert-row small,
+        body.dark .urp-alert-row small {
+          color: #71859a;
+        }
+
+        html[data-theme="dark"] .urp-alert-row>b,
+        html.dark .urp-alert-row>b,
+        body.dark .urp-alert-row>b {
+          color: #e2e8f0;
+        }
+
+        html[data-theme="dark"] .risk-badge.high,
+        html.dark .risk-badge.high,
+        body.dark .risk-badge.high {
+          background: rgba(239,68,68,.11);
+          color: #fca5a5;
+        }
+
+        html[data-theme="dark"] .risk-badge.medium,
+        html.dark .risk-badge.medium,
+        body.dark .risk-badge.medium {
+          background: rgba(245,158,11,.11);
+          color: #fcd34d;
+        }
+
+        html[data-theme="dark"] .risk-badge.low,
+        html.dark .risk-badge.low,
+        body.dark .risk-badge.low {
+          background: rgba(16,185,129,.11);
+          color: #6ee7b7;
+        }
+
+        html[data-theme="dark"] .urp-secondary,
+        html.dark .urp-secondary,
+        body.dark .urp-secondary {
+          background: #0d1a2a;
+          border-color: rgba(148,163,184,.20);
+          color: #cbd5e1;
+        }
+
+        html[data-theme="dark"] .urp-secondary:hover,
+        html.dark .urp-secondary:hover,
+        body.dark .urp-secondary:hover {
+          background: #14263b;
+          border-color: rgba(96,165,250,.35);
+          color: #93c5fd;
+        }
+
+        html[data-theme="dark"] .urp-modal-backdrop,
+        html.dark .urp-modal-backdrop,
+        body.dark .urp-modal-backdrop {
+          background: rgba(0,0,0,.72);
+        }
+
+        html[data-theme="dark"] .urp-modal,
+        html.dark .urp-modal,
+        body.dark .urp-modal {
+          background: #0d1a2a;
+          border: 1px solid rgba(148,163,184,.18);
+          box-shadow: 0 25px 80px rgba(0,0,0,.45);
+          color: #e2e8f0;
+        }
+
+        html[data-theme="dark"] .urp-close,
+        html.dark .urp-close,
+        body.dark .urp-close {
+          background: #17263a;
+          color: #9fb0c4;
+        }
+
+        html[data-theme="dark"] .urp-modal h2,
+        html.dark .urp-modal h2,
+        body.dark .urp-modal h2 {
+          color: #f8fafc;
+        }
+
+        html[data-theme="dark"] .urp-modal>p,
+        html.dark .urp-modal>p,
+        body.dark .urp-modal>p {
+          color: #8195aa;
+        }
+
+        html[data-theme="dark"] .urp-detail,
+        html.dark .urp-detail,
+        body.dark .urp-detail {
+          background: #0a1625;
+          border: 1px solid rgba(148,163,184,.13);
+        }
+
+        html[data-theme="dark"] .urp-detail span,
+        html.dark .urp-detail span,
+        body.dark .urp-detail span {
+          color: #71859a;
+        }
+
+        html[data-theme="dark"] .urp-detail b,
+        html.dark .urp-detail b,
+        body.dark .urp-detail b {
+          color: #e2e8f0;
+        }
+
+        html[data-theme="dark"] .urp-modal-reasons,
+        html.dark .urp-modal-reasons,
+        body.dark .urp-modal-reasons {
+          background: rgba(59,130,246,.10);
+          color: #93c5fd;
+          border: 1px solid rgba(96,165,250,.18);
+        }
+
+        html[data-theme="dark"] .urp-empty,
+        html.dark .urp-empty,
+        body.dark .urp-empty {
+          color: #71859a;
+        }
+
+        html[data-theme="dark"] .urp-empty h3,
+        html.dark .urp-empty h3,
+        body.dark .urp-empty h3 {
+          color: #dbe5ef;
+        }
+
+        /* Browser autofill/search fields stay dark instead of flashing white. */
+        html[data-theme="dark"] .urp-page input:-webkit-autofill,
+        html[data-theme="dark"] .urp-page input:-webkit-autofill:hover,
+        html[data-theme="dark"] .urp-page input:-webkit-autofill:focus,
+        html.dark .urp-page input:-webkit-autofill,
+        html.dark .urp-page input:-webkit-autofill:hover,
+        html.dark .urp-page input:-webkit-autofill:focus,
+        body.dark .urp-page input:-webkit-autofill,
+        body.dark .urp-page input:-webkit-autofill:hover,
+        body.dark .urp-page input:-webkit-autofill:focus {
+          -webkit-text-fill-color: #e2e8f0 !important;
+          -webkit-box-shadow: 0 0 0 1000px #081522 inset !important;
+          box-shadow: 0 0 0 1000px #081522 inset !important;
+          background-color: #081522 !important;
+          caret-color: #fff !important;
+        }
+
         @media(max-width:1050px){.urp-nav-links{display:none}.urp-stat-grid{grid-template-columns:repeat(2,1fr)}}
         @media(max-width:750px){.urp-main{padding:18px 14px}.urp-heading,.urp-profile-card{flex-direction:column}.urp-grid-3{grid-template-columns:1fr}.urp-stat-grid{grid-template-columns:repeat(2,1fr)}.urp-profile-card{align-items:flex-start}.urp-table-head{display:none}.urp-row{grid-template-columns:1fr auto}.urp-row>span:nth-child(2),.urp-row>span:nth-child(3){display:none}.urp-alert-row{grid-template-columns:34px 1fr auto}.urp-alert-row>b{display:none}.urp-nav{padding:0 14px}.urp-brand{min-width:auto}.urp-brand small{display:none}}
         @media(max-width:450px){.urp-stat-grid{grid-template-columns:1fr}.urp-filters{width:100%}.urp-filters button{flex:1}.urp-risk-score{width:100%}.urp-detail-grid{grid-template-columns:1fr}}

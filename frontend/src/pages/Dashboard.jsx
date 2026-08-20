@@ -30,7 +30,7 @@ const API_URL = (
 ).replace(/\/$/, "");
 
 function Dashboard() {
-  const [userName, setUserName] = useState("User");
+  const [userName, setUserName] = useState("");
 
   const [analytics, setAnalytics] = useState(null);
   const [loadingAnalytics, setLoadingAnalytics] = useState(true);
@@ -48,6 +48,7 @@ function Dashboard() {
   const logout = () => {
     localStorage.removeItem("access_token");
     localStorage.removeItem("user");
+    localStorage.removeItem("user_name");
     navigate("/login");
   };
 
@@ -132,30 +133,108 @@ function Dashboard() {
   // LOAD LOGGED-IN USER
   // =====================================================
 
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user");
+  const getUserName = (user) => {
+    if (!user) return "";
 
-    if (!storedUser) {
-      return;
+    const rawName =
+      user?.name ||
+      user?.full_name ||
+      user?.fullName ||
+      user?.username ||
+      user?.first_name ||
+      user?.given_name ||
+      user?.user?.name ||
+      user?.user?.full_name ||
+      user?.user?.fullName ||
+      user?.user?.username;
+
+    if (rawName) {
+      return String(rawName).trim();
     }
 
+    // If the backend did not return a name, use the email only
+    // as a last-resort personalized fallback.
+    const email =
+      user?.email ||
+      user?.user?.email ||
+      localStorage.getItem("user_email");
+
+    if (email) {
+      return String(email)
+        .split("@")[0]
+        .replace(/[._-]+/g, " ")
+        .trim()
+        .replace(/\s+/g, " ");
+    }
+
+    return "";
+  };
+
+  const loadCurrentUser = async () => {
     try {
-      const user = JSON.parse(storedUser);
+      // 1. Use the name saved by Login.jsx immediately.
+      const savedName = localStorage.getItem("user_name");
 
-      const name =
-        user?.name ||
-        user?.full_name ||
-        user?.username ||
-        user?.first_name ||
-        user?.given_name ||
-        user?.email?.split("@")[0] ||
-        "User";
+      if (savedName?.trim()) {
+        setUserName(savedName.trim());
+      }
 
-      setUserName(String(name).trim() || "User");
+      // 2. Also check the complete user object saved by Login.jsx.
+      const storedUser = localStorage.getItem("user");
+
+      if (storedUser) {
+        try {
+          const user = JSON.parse(storedUser);
+          const name = getUserName(user);
+
+          if (name) {
+            const cleanName = String(name).trim();
+            setUserName(cleanName);
+            localStorage.setItem("user_name", cleanName);
+          }
+        } catch (error) {
+          console.warn("Unable to parse stored user:", error);
+        }
+      }
+
+      // 3. Ask the backend for the authenticated user.
+      // This is the authoritative fallback.
+      const token = localStorage.getItem("access_token");
+
+      if (!token) {
+        return;
+      }
+
+      const response = await fetch(`${API_URL}/api/auth/me`, {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        return;
+      }
+
+      const data = await response.json();
+      const user = data?.user || data;
+      const name = getUserName(user);
+
+      if (name) {
+        const cleanName = String(name).trim();
+
+        setUserName(cleanName);
+        localStorage.setItem("user_name", cleanName);
+        localStorage.setItem("user", JSON.stringify(user));
+      }
     } catch (error) {
-      console.error("Unable to read logged-in user:", error);
-      setUserName("User");
+      console.warn("Unable to load logged-in user:", error);
     }
+  };
+
+  useEffect(() => {
+    loadCurrentUser();
   }, []);
 
   useEffect(() => {
@@ -376,8 +455,15 @@ function Dashboard() {
               FRAUDSHIELD SECURITY OPERATIONS CENTER
             </div>
             <h1 className="fs2-welcome-title">
-              Welcome, {userName}
-              <span className="fs2-welcome-wave"> </span>
+              Welcome,{" "}
+              <span
+                className="notranslate"
+                translate="no"
+                data-no-translate="true"
+              >
+                {userName || "User"}
+              </span>
+              <span className="fs2-welcome-wave"> 👋</span>
               <br />
               <span>Fraud Intelligence Command Center</span>
             </h1>
